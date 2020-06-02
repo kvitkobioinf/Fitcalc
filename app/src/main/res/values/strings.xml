@@ -1,3 +1,62 @@
 <resources>
-    <string name="app_name">Fit Calc</string>
+    <string name="app_name">FitCalc</string>
+    <string name="Zaczynamy">Zaczynamy</string>
+    <string name="Witamy">Witamy w FitCalc!</string>
+    <string name="Konto">Nie masz jeszcze konta?</string>
+    <string name="Logowanie">Zaloguj się</string>
+    <string name="Zalozkonto">Załóż konto</string>
+    <string name="Imię">Imię</string>
+    <string name="Nazwisko">Nazwisko</string>
+    <string name="DataUr">Data urodzenia</string>
+    <string name="Email">e-mail</string>
+    <string name="podpowiedzDaty">dd/mm/rrrr</string>
+    <string name="Cel">Cel?</string>
+    <string name="Utrata">Utrata wagi</string>
+    <string name="ZachowanieMasy">Zachowanie masy ciała</string>
+    <string name="NaborMasy">Nabór masy ciała</string>
+    <string name="WagaDocelowa">Waga docelowa</string>
+    <string name="Wiek">Wiek</string>
+    <string name="Plec">Płec</string>
+    <string name="Waga">Waga</string>
+    <string name="Wzrost">Wzrost</string>
+    <string name="Atkywnosc">Aktywność</string>
+    <string name="Oblicz">Oblicz</string>
+    <string name="BMI">Twój BMI</string>
+    <string name="BMR">Twój BMR</string>
+    <string name="RMR">Twój RMR</string>
+    <string name="PAL">Twój PAL</string>
+    <string name="Sniadanie">Śniadanie</string>
+    <string name="Przekaska1">Przekąska I</string>
+    <string name="Obiad">Obiad</string>
+    <string name="Przekaska2">Przekąska II</string>
+    <string name="Kolacja">Kolacja</string>
+    <string name="CzasPosilku1">Czas posiłku</string>
+    <string name="CzasPosilku2">Czas posiłku</string>
+    <string name="CzasPosilku3">Czas posiłku</string>
+    <string name="CzasPosilku4">Czas posiłku</string>
+    <string name="CzasPosilku5">Czas posiłku</string>
+    <string name="PodpowiedzGodzinyPosilku1">gg:mm</string>
+    <string name="PodpowiedzGodzinyPosilku2">gg:mm</string>
+    <string name="PodpowiedzGodzinyPosilku3">gg:mm</string>
+    <string name="PodpowiedzGodzinyPosilku4">gg:mm</string>
+    <string name="PodpowiedzGodzinyPosilku5">gg:mm</string>
+    <string name="BTW1">B/T/W</string>
+    <string name="BTW2">B/T/W</string>
+    <string name="BTW3">B/T/W</string>
+    <string name="BTW4">B/T/W</string>
+    <string name="BTW5">B/T/W</string>
+    <string name="MojeKonto">Moje konto</string>
+    <string name="Podsumowanie">Podsumowanie</string>
+    <string name="Cele">Cele</string>
+    <string name="Ustawienia">Ustawienia</string>
+
+
+
+
+
+
+
+
+
+
 </resources>
