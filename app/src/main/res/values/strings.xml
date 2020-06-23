@@ -5,21 +5,34 @@
     <string name="Konto">Nie masz jeszcze konta?</string>
     <string name="Logowanie">Zaloguj się</string>
     <string name="Zalozkonto">Załóż konto</string>
+    <string name="Dalej">Dalej</string>
     <string name="Imię">Imię</string>
     <string name="Nazwisko">Nazwisko</string>
+    <string name="wpiszimie">wpisz imię</string>
+    <string name="wpisznazwisko">wpisz nazwisko</string>
+    <string name="wpiszemail">wpisz e-mail</string>
+    <string name="wpiszswojawage">Wpisz swoją wagę docelową</string>
     <string name="DataUr">Data urodzenia</string>
     <string name="Email">e-mail</string>
+    <string name="Hasło">haslo</string>
     <string name="podpowiedzDaty">dd/mm/rrrr</string>
-    <string name="Cel">Cel?</string>
+    <string name="wybierzcel">WYBIERZ CEL</string>
     <string name="Utrata">Utrata wagi</string>
+    <string name="RadioM">radioM</string>
+    <string name="licbawaga">00.0</string>
+    <string name="liczbawzrost">000</string>
     <string name="ZachowanieMasy">Zachowanie masy ciała</string>
     <string name="NaborMasy">Nabór masy ciała</string>
-    <string name="WagaDocelowa">Waga docelowa</string>
+    <string name="WagaDocelowa">waga docelowa</string>
     <string name="Wiek">Wiek</string>
     <string name="Plec">Płec</string>
+    <string name="Male">Male</string>
+    <string name="Female">Female</string>
     <string name="Waga">Waga</string>
     <string name="Wzrost">Wzrost</string>
-    <string name="Atkywnosc">Aktywność</string>
+    <string name="Atkywnosc">Twoja aktywność</string>
+    <string name="siedzaca">Nieaktywny/Siedzący</string>
+    <string name="siedzacy1">(Zero aktywności, tryb siedzący)</string>
     <string name="Oblicz">Oblicz</string>
     <string name="BMI">Twój BMI</string>
     <string name="BMR">Twój BMR</string>
@@ -49,14 +62,18 @@
     <string name="Podsumowanie">Podsumowanie</string>
     <string name="Cele">Cele</string>
     <string name="Ustawienia">Ustawienia</string>
-
-
-
-
-
-
-
-
+    <string name="dfvddfvd">dfvddfvd</string>
+    <string name="dosc_aktywny">Dość aktywny</string>
+    <string name="uwzgl_dniaj_c_spacery_i_wiczenia_1_2_w_tygodniu">(Uwzględniając spacery i ćwiczenia 1-2 razy w tygodniu)</string>
+    <string name="wiczenia_2_3_razy_w_tygodniu">(Ćwiczenia 2-3 razy w tygodniu)</string>
+    <string name="aktywny">Aktywny</string>
+    <string name="ostre_wiczenia_ponad_3_razy_w_tygodniu">(Ostre ćwiczenia ponad 3 razy w tygodniu)</string>
+    <string name="bardzo_aktywny">Bardzo aktywny</string>
+    <string name="codzienne_ostre_wiczenia">(Codzienne ostre ćwiczenia)</string>
+    <string name="plusik">+</string>
+    <string name="wpisz_godzin_posi_ku">wpisz godzinę posiłku</string>
+    <string name="id_do_kalendarzu">Idź do kalendarzu</string>
+    <string name="_35">35%</string>
 
 
 </resources>

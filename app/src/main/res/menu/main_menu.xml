@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/konto"
+        android:title="@string/MojeKonto"
+        android:icon="@drawable/ic_more"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/cele"
+        android:title="@string/Cele"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/podsum"
+        android:title="@string/Podsumowanie"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/ustawienia"
+        android:title="@string/Ustawienia"
+        app:showAsAction="never"/>
+
+</menu>

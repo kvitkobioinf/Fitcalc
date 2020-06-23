@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        tools:context=".wybor_posilku">
+
+        <LinearLayout
+            android:id="@+id/buttonsiadanie"
+            android:layout_width="wrap_content"
+            android:onClick="otworzPosilek"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/btn_color"
+            android:orientation="vertical"
+            android:padding="25dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Sniadanie"
+                android:textColor="#fafafa"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_35" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/przekaska1button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="otworzPosilek"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_color"
+            android:padding="10dp"
+            android:text="@string/Przekaska1"
+            android:textColor="#fafafa"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonobiad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_color"
+            android:padding="25dp"
+            android:text="@string/Obiad"
+            android:textColor="#fafafa"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonprzekaska2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_color"
+            android:padding="10dp"
+            android:text="@string/Przekaska2"
+            android:textColor="#fafafa"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/buttonkolacja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:background="@drawable/btn_color"
+            android:padding="10dp"
+            android:text="@string/Kolacja"
+            android:textColor="#fafafa"
+            android:textSize="25sp" />
+
+    </LinearLayout>
+</ScrollView>
