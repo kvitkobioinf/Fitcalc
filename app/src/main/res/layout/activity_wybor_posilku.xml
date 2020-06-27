@@ -8,7 +8,7 @@
         android:id="@+id/buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
@@ -19,10 +19,10 @@
             android:layout_width="wrap_content"
             android:onClick="otworzPosilek"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/btn_color"
             android:orientation="vertical"
-            android:padding="25dp">
+            android:padding="20dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -34,11 +34,15 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/_35" />
+                android:text="@string/_35"
+                android:textColor="#fafafa"
+                android:textSize="15sp"
+                android:layout_gravity="center"/>
 
         </LinearLayout>
 
-        <Button
+
+        <LinearLayout
             android:id="@+id/przekaska1button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -46,42 +50,129 @@
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_color"
             android:padding="10dp"
-            android:text="@string/Przekaska1"
+            android:orientation="vertical"
             android:textColor="#fafafa"
-            android:textSize="25sp" />
+            android:textSize="25sp">
 
-        <Button
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Przekaska1"
+                android:textColor="#fafafa"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_15"
+                android:textColor="#fafafa"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+               />
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/buttonobiad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_color"
-            android:padding="25dp"
-            android:text="@string/Obiad"
+            android:padding="20dp"
+            android:orientation="vertical"
             android:textColor="#fafafa"
-            android:textSize="25sp" />
+            android:textSize="25sp">
 
-        <Button
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/Obiad"
+                android:textColor="#fafafa"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_30"
+                android:textColor="#fafafa"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/buttonprzekaska2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_color"
             android:padding="10dp"
-            android:text="@string/Przekaska2"
+            android:orientation="vertical"
             android:textColor="#fafafa"
-            android:textSize="25sp" />
+            android:textSize="25sp">
 
-        <Button
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:text="@string/Przekaska2"
+                android:textColor="#fafafa"
+                android:textSize="25sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_10"
+                android:textColor="#fafafa"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:id="@+id/buttonkolacja"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
             android:background="@drawable/btn_color"
             android:padding="10dp"
+            android:orientation="vertical"
             android:text="@string/Kolacja"
             android:textColor="#fafafa"
-            android:textSize="25sp" />
+            android:textSize="25sp" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fafafa"
+                android:textSize="25sp"
+                android:text="@string/Kolacja"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/_10"
+                android:textColor="#fafafa"
+                android:textSize="15sp"
+                android:layout_gravity="center"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/procentowy_udzia_kalorii_w_ci_gu_dnia"
+                android:textColor="#000"
+                android:layout_marginTop="10dp"/>
+    </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

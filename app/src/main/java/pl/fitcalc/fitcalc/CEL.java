@@ -18,7 +18,7 @@ public class CEL extends AppCompatActivity {
         utrata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent utrata_intent = new Intent(CEL.this, obliczenie.class);
+                Intent utrata_intent = new Intent(CEL.this, Aktywnosc.class);
                 startActivity(utrata_intent);
             }
         });
@@ -27,7 +27,7 @@ public class CEL extends AppCompatActivity {
         zachowanie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent zachowanie_intent = new Intent(CEL.this, obliczenie.class);
+                Intent zachowanie_intent = new Intent(CEL.this, Aktywnosc.class);
                 startActivity(zachowanie_intent);
             }
         });

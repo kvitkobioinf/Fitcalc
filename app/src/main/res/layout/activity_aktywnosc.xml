@@ -26,97 +26,154 @@
             android:textColor="#000"/>
 
 
-            <Button
+            <LinearLayout
                 android:id="@+id/buttonact1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="@string/siedzaca"
-                android:textColor="#fafafa"
                 android:padding="10dp"
-                android:background="@drawable/btn_color"/>
+                android:orientation="vertical"
+                android:background="@drawable/btn_color">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/siedzacy1"
-            android:textSize="15sp"
-            android:textColor="#000"
-            android:layout_marginTop="5dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:text="@string/siedzaca"
+                    android:layout_gravity="center"
+                    android:textSize="20sp"
+                    android:textColor="#fafafa"
+                    android:layout_marginTop="5dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:text="@string/siedzacy1"
+                    android:textSize="15sp"
+                    android:textColor="#fafafa"
+                    android:layout_marginTop="5dp"/>
+            </LinearLayout>
 
 
-        <Button
+        <LinearLayout
             android:id="@+id/buttonact2"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_color"
-            android:textColor="#fafafa"
-            android:text="@string/dosc_aktywny"/>
+           android:orientation="vertical"
+            android:text="@string/dosc_aktywny">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/uwzgl_dniaj_c_spacery_i_wiczenia_1_2_w_tygodniu"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp"
-            android:paddingLeft="30dp"
-            android:paddingRight="30dp"
-            android:textColor="#000"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+              android:text="@string/dosc_aktywny"
+                android:textSize="20sp"
+                android:layout_marginTop="5dp"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:layout_gravity="center"
+                android:textColor="#fafafa"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/uwzgl_dniaj_c_spacery_i_wiczenia_1_2_w_tygodniu"
+                android:textSize="15sp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:textColor="#fafafa"/>
+        </LinearLayout>
 
-<Button
+
+
+    <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/bottonact3"
     android:layout_marginTop="20dp"
-    android:text="Umiarkowanie aktywny"
+  android:orientation="vertical"
     android:background="@drawable/btn_color"
     android:padding="10dp"
-    android:textColor="#fafafa"
-    tools:ignore="HardcodedText" />
+    tools:ignore="HardcodedText">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Umiarkowanie aktywny"
+            android:textSize="20sp"
+            android:layout_marginTop="5dp"
+            android:textColor="#fafafa"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wiczenia_2_3_razy_w_tygodniu"
             android:textSize="15sp"
             android:layout_marginTop="5dp"
-            android:textColor="#000"
+            android:textColor="#fafafa"
             />
-<Button
-    android:layout_width="200dp"
+    </LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:id="@+id/buttonact4"
     android:layout_marginTop="20dp"
-    android:text="@string/aktywny"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="10dp"
     android:background="@drawable/btn_color"
-    android:textColor="#fafafa"
-    />
-        <TextView
+    android:textColor="#fafafa">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+       android:text="@string/aktywny"
+        android:textSize="20sp"
+        android:layout_marginTop="5dp"
+        android:textColor="#fafafa"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/ostre_wiczenia_ponad_3_razy_w_tygodniu"
+        android:textSize="15sp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:textColor="#fafafa"/>
+        />
+
+</LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/buttonact5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/ostre_wiczenia_ponad_3_razy_w_tygodniu"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:textColor="#000"/>
-
-        <Button
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/buttonact5"
             android:layout_marginTop="20dp"
             android:background="@drawable/btn_color"
-            android:textColor="#fafafa"
-            android:text="@string/bardzo_aktywny"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/codzienne_ostre_wiczenia"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp"
-            android:textColor="#000"/>
+            android:gravity="center"
+            android:padding="10dp"
+            android:orientation="vertical"
+            android:textColor="#fafafa">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/bardzo_aktywny"
+                android:textColor="#fafafa"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="@string/codzienne_ostre_wiczenia"
+                android:textColor="#fafafa"
+                android:textSize="15sp" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </ScrollView>

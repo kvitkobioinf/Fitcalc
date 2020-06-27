@@ -74,6 +74,10 @@
     <string name="wpisz_godzin_posi_ku">wpisz godzinę posiłku</string>
     <string name="id_do_kalendarzu">Idź do kalendarzu</string>
     <string name="_35">35%</string>
+    <string name="_15">15%</string>
+    <string name="_30">30%</string>
+    <string name="_10">10%</string>
+    <string name="procentowy_udzia_kalorii_w_ci_gu_dnia">% - Procentowy udział kalorii w ciągu dnia</string>
 
 
 </resources>

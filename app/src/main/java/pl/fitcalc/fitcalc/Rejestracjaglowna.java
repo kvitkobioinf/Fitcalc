@@ -53,6 +53,16 @@ private static final String TAG = "Rejestracjaglowna";
          mDisplayDate.setText(date);
      }
      };
+
+        Button dalej = (Button) findViewById(R.id.buttonDalej);
+        dalej.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent dalej_intent = new Intent(Rejestracjaglowna.this, CEL.class);
+                startActivity(dalej_intent);
+            }
+        });
+
         }
 
 
