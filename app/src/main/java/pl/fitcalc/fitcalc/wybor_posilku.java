@@ -33,6 +33,10 @@ public class wybor_posilku extends AppCompatActivity {
         if(v.getId() == R.id.buttonsiadanie) {
             posilek = 0;
             Log.d("FitCalc", "Otworze posilek - sniadanie");
+            //String sniadanie =
+            //Intent i = new Intent (getApplicationContext(), posilki.class);
+            //i.putExtra()
+
         }
         else if(v.getId() == R.id.przekaska1button) {
             posilek = 1;

@@ -14,5 +14,7 @@ public class obliczenie extends AppCompatActivity {
     }
 
     public void ObliczBMI(View view) {
+
+
     }
 }
