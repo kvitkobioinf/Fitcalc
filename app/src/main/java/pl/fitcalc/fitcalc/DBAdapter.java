@@ -109,6 +109,15 @@ public class DBAdapter {
 
     public DBAdapter open() throws SQLException {
         db = DBHelper.getWritableDatabase();
+        db.execSQL("CREATE TABLE IF NOT EXISTS users (" +
+                        " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        " first_name VARCHAR, " +
+                        " last_name VARCHAR, " +
+                        " email VARCHAR, " +
+                        " password VARCHAR, " +
+                        " birthday VARCHAR, " +
+                        " sex VARCHAR, " +
+                        " body_type VARCHAR);");
         return this;
     }
 
