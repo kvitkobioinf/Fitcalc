@@ -38,7 +38,6 @@ public class DBAdapter {
                         " last_name VARCHAR, " +
                         " email VARCHAR, " +
                         " password VARCHAR, " +
-                        " password VARCHAR, " +
                         " birthday VARCHAR, " +
                         " sex VARCHAR, " +
                         " body_type VARCHAR);");
@@ -88,6 +87,9 @@ public class DBAdapter {
                         " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         " name VARCHAR, " +
                         " kcal_share INTEGER);");
+
+                db.execSQL("CREATE TABLE IF NOT EXISTS owner (" +
+                        " user_id INTEGER);");
 
             }
             catch (SQLException e) {
