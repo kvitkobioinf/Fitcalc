@@ -110,14 +110,63 @@ public class DBAdapter {
     public DBAdapter open() throws SQLException {
         db = DBHelper.getWritableDatabase();
         db.execSQL("CREATE TABLE IF NOT EXISTS users (" +
-                        " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        " first_name VARCHAR, " +
-                        " last_name VARCHAR, " +
-                        " email VARCHAR, " +
-                        " password VARCHAR, " +
-                        " birthday VARCHAR, " +
-                        " sex VARCHAR, " +
-                        " body_type VARCHAR);");
+                " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " first_name VARCHAR, " +
+                " last_name VARCHAR, " +
+                " email VARCHAR UNIQUE, " +
+                " password VARCHAR, " +
+                " birthday VARCHAR, " +
+                " sex VARCHAR, " +
+                " body_type VARCHAR);");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS food (" +
+                " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " name VARCHAR, " +
+                " manufactor_id VARCHAR, " + //(producent)
+                " weight DOUBLE, " +
+                " unit VARCHAR, " +
+                " kcal DOUBLE, " +
+                " proteins DOUBLE, " +
+                " carbohydrates DOUBLE, " +
+                " fat DOUBLE, " +
+                " added_by_user INT, " +
+                " barcode VARCHAR);");
+
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS user_food (" +
+                " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " food_id INTEGER, " +
+                " user_id INTEGER, " +
+                " date VARCHAR, " +
+                " serving DOUBLE, " +
+                " meail_id INTEGER);");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS user_masurments (" +
+                " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " user_id INTEGER, " +
+                " date VARCHAR, " +
+                " weight DOUBLE, " +
+                " desired_weight DOUBLE, " +
+                " goal VARCHAR, " +
+                " height DOUBLE, " +
+                " BMI DOUBLE, " +
+                " BMR DOUBLE, " +
+                " activity_level DOUBLE);");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS user_meals (" +
+                " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " user_id INTEGER, " +
+                " meal_id INTEGER, " +
+                " date VARCHAR, " +
+                " time VARCHAR);");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS meals (" +
+                " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                " name VARCHAR, " +
+                " kcal_share INTEGER);");
+
+        db.execSQL("CREATE TABLE IF NOT EXISTS owner (" +
+                " user_id INTEGER);");
         return this;
     }
 
@@ -136,5 +185,17 @@ public class DBAdapter {
          int count = mCount.getInt(0);
          mCount.close();
          return count;
+     }
+
+     public int logUserIn(String email, String password) {
+         Cursor mCount = db.rawQuery("SELECT id FROM users WHERE email = '" + email + "' AND password = '" + password + "'", null);
+         int id = 0;
+         try {
+             mCount.moveToFirst();
+             id = mCount.getInt(0);
+             mCount.close();
+         } catch (Exception e) {}
+
+        return id;
      }
 }
