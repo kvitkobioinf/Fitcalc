@@ -77,5 +77,9 @@
     <string name="_15">15%</string>
     <string name="_30">30%</string>
     <string name="_10">10%</string>
-    <string name="procentowy_udzia_kalorii_w_ci_gu_dnia">% - Procentowy udział kalorii w ciągu dnia</string>
+    <string name="procentowy_udzia_kalorii_w_ciagu_dnia">% - Procentowy udział kalorii w ciągu dnia</string>
+    <string name="kontynuuj_akcepuj_regulamin">Kontynuując akceptujesz regulamin</string>
+    <string name="welcome_splash">Kobieta ćwicząca jogę</string>
+    <string name="logo">FitCalc logo</string>
+    <string name="slogan">Świetny slogan aplikacji</string>
 </resources>

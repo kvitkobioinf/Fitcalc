@@ -169,7 +169,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/procentowy_udzia_kalorii_w_ci_gu_dnia"
+                android:text="@string/procentowy_udzia_kalorii_w_ciagu_dnia"
                 android:textColor="#000"
                 android:layout_marginTop="10dp"/>
     </LinearLayout>

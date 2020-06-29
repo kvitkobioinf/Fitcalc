@@ -6,29 +6,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.stetho.Stetho;
-import com.facebook.stetho.okhttp3.StethoInterceptor;
-
-import okhttp3.OkHttpClient;
-
-
 public class WelcomeActivity extends AppCompatActivity {
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
-
-        Stetho.initializeWithDefaults(this) ;
-
-        new OkHttpClient.Builder ()
-                .addNetworkInterceptor(new StethoInterceptor())
-                .build();
-
 
         DBAdapter db = new DBAdapter(this);
         db.open();
