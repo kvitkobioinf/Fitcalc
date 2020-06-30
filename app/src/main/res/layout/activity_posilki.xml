@@ -1,72 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".PosilkiActivity">
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".PosilkiActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center">
-        <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/Sniadanie"/>
-    </LinearLayout>
+            android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:orientation="horizontal"
-            >
-
-
-            <Button
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:background="@drawable/plusik"
-                android:text="@string/plusik"
-                android:textSize="30sp"
-                android:textColor="#fafafa">
-
-            </Button>
-
-            <ImageButton
-                android:layout_width="50dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="30dp"
-                android:background="@drawable/plusik"
-                android:src="@drawable/barcode_scan">
-
-            </ImageButton>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorAccent"
+                android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <EditText
-                    android:layout_width="100dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="100dp"
-                    android:hint="gg:mm"
-                    android:padding="5dp"
-                    android:gravity="center"
-                    android:background="@drawable/kontur_color"/>
-                <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/wpisz_godzin_posi_ku"
-                    android:textColor="#000"
-                    android:layout_marginLeft="60dp"
-                    />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:id="@+id/posilek_tv"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="16dp"
+                        android:layout_weight="1"
+                        android:text="Śniadanie"
+                        android:textColor="@android:color/white"
+                        android:textSize="24sp" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/CzasPosilku"
+                        android:textColor="@android:color/white" />
+
+                <Button
+                        android:id="@+id/godzina_posilku_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/contour_white"
+                        android:textColor="@android:color/white" />
+
             </LinearLayout>
 
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp">
+
+                <EditText
+                        android:id="@+id/wyszukaj_produkt_edt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/rounded_rectangle_searchbar"
+                        android:hint="@string/danie"
+                        android:inputType="text"
+                        android:paddingStart="52dp"
+                        android:paddingTop="16dp"
+                        android:paddingEnd="24dp"
+                        android:paddingBottom="16dp" />
+
+                <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/ic_search" />
+
+                <ImageButton
+                        android:id="@+id/skanuj_kod_kreskowy_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="24dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/kod_kreskowy"
+                        android:src="@drawable/barcode_scan" />
+
+                <ImageButton
+                        android:id="@+id/wyczysc_wyszukiwanie_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="16dp"
+                        android:layout_toStartOf="@+id/skanuj_kod_kreskowy_btn"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="@string/kod_kreskowy"
+                        android:src="@drawable/ic_cancel"
+                        android:visibility="gone" />
+
+            </RelativeLayout>
 
         </LinearLayout>
 
 
+    </LinearLayout>
 </ScrollView>

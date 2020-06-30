@@ -43,21 +43,8 @@
     <string name="Obiad">Obiad</string>
     <string name="Przekaska2">Przekąska II</string>
     <string name="Kolacja">Kolacja</string>
-    <string name="CzasPosilku1">Czas posiłku</string>
-    <string name="CzasPosilku2">Czas posiłku</string>
-    <string name="CzasPosilku3">Czas posiłku</string>
-    <string name="CzasPosilku4">Czas posiłku</string>
-    <string name="CzasPosilku5">Czas posiłku</string>
-    <string name="PodpowiedzGodzinyPosilku1">gg:mm</string>
-    <string name="PodpowiedzGodzinyPosilku2">gg:mm</string>
-    <string name="PodpowiedzGodzinyPosilku3">gg:mm</string>
-    <string name="PodpowiedzGodzinyPosilku4">gg:mm</string>
-    <string name="PodpowiedzGodzinyPosilku5">gg:mm</string>
-    <string name="BTW1">B/T/W</string>
-    <string name="BTW2">B/T/W</string>
-    <string name="BTW3">B/T/W</string>
-    <string name="BTW4">B/T/W</string>
-    <string name="BTW5">B/T/W</string>
+    <string name="CzasPosilku">Czas posiłku</string>
+    <string name="BTW">B/T/W</string>
     <string name="MojeKonto">Moje konto</string>
     <string name="Podsumowanie">Podsumowanie</string>
     <string name="Cele">Cele</string>
@@ -82,4 +69,6 @@
     <string name="welcome_splash">Kobieta ćwicząca jogę</string>
     <string name="logo">FitCalc logo</string>
     <string name="slogan">Świetny slogan aplikacji</string>
+    <string name="danie">Danie</string>
+    <string name="kod_kreskowy">Zeskanuj kod kreskowy produktu</string>
 </resources>
