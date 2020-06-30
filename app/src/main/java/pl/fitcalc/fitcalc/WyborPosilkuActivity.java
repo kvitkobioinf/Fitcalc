@@ -1,16 +1,12 @@
 package pl.fitcalc.fitcalc;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
 
-import java.io.Console;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class WyborPosilkuActivity extends AppCompatActivity {
 
@@ -30,15 +26,11 @@ public class WyborPosilkuActivity extends AppCompatActivity {
 
     public void otworzPosilek(View v) {
         int posilek;
-        if(v.getId() == R.id.buttonsiadanie) {
+        if (v.getId() == R.id.buttonsiadanie) {
             posilek = 0;
             Log.d("FitCalc", "Otworze posilek - sniadanie");
-            //String sniadanie =
-            //Intent i = new Intent (getApplicationContext(), posilki.class);
-            //i.putExtra()
-
-        }
-        else if(v.getId() == R.id.przekaska1button) {
+            startActivity(new Intent(WyborPosilkuActivity.this, PosilkiActivity.class));
+        } else if (v.getId() == R.id.przekaska1button) {
             posilek = 1;
             Log.d("FitCalc", "Otworze posilek - przekaska 1");
         }
