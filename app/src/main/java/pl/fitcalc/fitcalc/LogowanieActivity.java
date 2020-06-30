@@ -7,32 +7,49 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-public class Logowanie extends AppCompatActivity {
+public class LogowanieActivity extends AppCompatActivity {
+    DBAdapter db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_logowanie);
 
-        final DBAdapter db = new DBAdapter(this);
-        db.open();
+        db = new DBAdapter(this);
+
         final EditText email = (EditText) findViewById(R.id.email);
         final EditText haslo = (EditText) findViewById(R.id.haslo);
-        Button zaloguj2 = (Button) findViewById(R.id.button_zaloguj);
-        zaloguj2.setOnClickListener(new View.OnClickListener() {
+        Button zaloguj = (Button) findViewById(R.id.button_zaloguj);
+
+        zaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString());
 
                 if(user_id != 0) {
-                    Intent zaloguj2_intent = new Intent(Logowanie.this, wybor_posilku.class);
-                    startActivity(zaloguj2_intent);
+                    Intent zaloguj_intent = new Intent(LogowanieActivity.this, WyborPosilkuActivity.class);
+                    startActivity(zaloguj_intent);
                 }
                 else {
-                    //Log
+                    Toast.makeText(LogowanieActivity.this, "Nieprawidłowe dane logowania", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        db.open();
+    }
+
+    @Override
+    protected void onPause() {
+        db.close();
+
+        super.onPause();
     }
 }

@@ -12,7 +12,7 @@
         android:layout_marginBottom="20dp"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        tools:context=".wybor_posilku">
+        tools:context=".WyborPosilkuActivity">
 
         <LinearLayout
             android:id="@+id/buttonsiadanie"

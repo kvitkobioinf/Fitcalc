@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import java.io.Console;
 
-public class wybor_posilku extends AppCompatActivity {
+public class WyborPosilkuActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

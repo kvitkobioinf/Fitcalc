@@ -9,7 +9,7 @@
     android:padding="50dp"
     android:orientation="vertical"
     android:gravity="center"
-    tools:context=".CEL">
+    tools:context=".CelActivity">
 
     <TextView
         android:id="@+id/cel"

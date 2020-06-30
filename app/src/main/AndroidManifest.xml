@@ -16,13 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".posilki" />
-        <activity android:name=".Aktywnosc" />
-        <activity android:name=".wybor_posilku" />
-        <activity android:name=".obliczenie" />
-        <activity android:name=".CEL" />
-        <activity android:name=".Rejestracjaglowna" />
-        <activity android:name=".Logowanie" />
+        <activity android:name=".PosilkiActivity" />
+        <activity android:name=".AktywnoscActivity" />
+        <activity android:name=".WyborPosilkuActivity" />
+        <activity android:name=".ObliczeniaActivity" />
+        <activity android:name=".CelActivity" />
+        <activity android:name=".RejestracjaGlowna" />
+        <activity android:name=".LogowanieActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -22,8 +22,6 @@ public class DBAdapter {
         DBHelper = new DatabaseHelper(context);
     }
 
-
-    //DatabaseHelper
     private static class DatabaseHelper extends SQLiteOpenHelper {
         DatabaseHelper(Context context) {
             super(context, databaseName, null, databaseVersion);
@@ -102,14 +100,13 @@ public class DBAdapter {
 
             onCreate(db);
 
-            Log.w("FitCalcLog", "Upgrading database from version " + oldVersion + "to " + newVersion + ", which will destroy all old data");
+            Log.w("FitCalcLog", "Aktualizacja bazy danych z wersji " + oldVersion + "do " + newVersion + ", spowoduje usunięcie wszystkich dotychczasowych danych.");
         }
 
     }
 
-    public DBAdapter open() throws SQLException {
+    public void open() throws SQLException {
         db = DBHelper.getWritableDatabase();
-       return this;
     }
 
     public void close() {

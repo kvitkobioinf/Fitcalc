@@ -7,18 +7,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class CEL extends AppCompatActivity {
+public class CelActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_c_e_l);
+        setContentView(R.layout.activity_cel);
 
         Button utrata = (Button) findViewById(R.id.utrata);
         utrata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent utrata_intent = new Intent(CEL.this, Aktywnosc.class);
+                Intent utrata_intent = new Intent(CelActivity.this, AktywnoscActivity.class);
                 startActivity(utrata_intent);
             }
         });
@@ -27,7 +27,7 @@ public class CEL extends AppCompatActivity {
         zachowanie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent zachowanie_intent = new Intent(CEL.this, Aktywnosc.class);
+                Intent zachowanie_intent = new Intent(CelActivity.this, AktywnoscActivity.class);
                 startActivity(zachowanie_intent);
             }
         });
@@ -36,7 +36,7 @@ public class CEL extends AppCompatActivity {
         nabor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nabor_intent = new Intent(CEL.this, Aktywnosc.class);
+                Intent nabor_intent = new Intent(CelActivity.this, AktywnoscActivity.class);
                 startActivity(nabor_intent);
             }
         });

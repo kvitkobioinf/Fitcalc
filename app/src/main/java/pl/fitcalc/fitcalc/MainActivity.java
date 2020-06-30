@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         zaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent zaloguj_intent = new Intent(MainActivity.this, Logowanie.class); // skąd -> dokąd (przejscie)
+                Intent zaloguj_intent = new Intent(MainActivity.this, LogowanieActivity.class); // skąd -> dokąd (przejscie)
                 startActivity(zaloguj_intent);
 
             }
@@ -32,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         zaloz.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent zaloz_intent = new Intent(MainActivity.this, Rejestracjaglowna.class);
+                Intent zaloz_intent = new Intent(MainActivity.this, RejestracjaGlowna.class);
                 startActivity(zaloz_intent);
             }
         });
