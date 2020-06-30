@@ -1,117 +1,131 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".PosilkiActivity">
+        android:orientation="vertical">
 
-    <LinearLayout
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            tools:context=".PosilkiActivity">
 
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorAccent"
                 android:orientation="vertical">
 
             <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
+                    android:background="@color/colorAccent"
+                    android:orientation="vertical">
 
-                <TextView
-                        android:id="@+id/posilek_tv"
-                        android:layout_width="0dp"
+                <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="16dp"
-                        android:layout_weight="1"
-                        android:text="Śniadanie"
-                        android:textColor="@android:color/white"
-                        android:textSize="24sp" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
 
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/CzasPosilku"
-                        android:textColor="@android:color/white" />
+                    <TextView
+                            android:id="@+id/posilek_tv"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:layout_weight="1"
+                            android:text="Śniadanie"
+                            android:textColor="@android:color/white"
+                            android:textSize="24sp" />
 
-                <Button
-                        android:id="@+id/godzina_posilku_btn"
-                        android:layout_width="wrap_content"
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/CzasPosilku"
+                            android:textColor="@android:color/white" />
+
+                    <Button
+                            android:id="@+id/godzina_posilku_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/contour_white"
+                            android:textColor="@android:color/white" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/contour_white"
-                        android:textColor="@android:color/white" />
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="16dp">
+
+                    <EditText
+                            android:id="@+id/wyszukaj_danie_edt"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/rounded_rectangle_searchbar"
+                            android:hint="@string/danie"
+                            android:inputType="text"
+                            android:paddingStart="52dp"
+                            android:paddingTop="16dp"
+                            android:paddingEnd="24dp"
+                            android:paddingBottom="16dp" />
+
+                    <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="16dp"
+                            android:src="@drawable/ic_search" />
+
+                    <ImageButton
+                            android:id="@+id/skanuj_kod_kreskowy_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="24dp"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/kod_kreskowy"
+                            android:src="@drawable/barcode_scan" />
+
+                    <ImageButton
+                            android:id="@+id/wyczysc_wyszukiwanie_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="16dp"
+                            android:layout_toStartOf="@+id/skanuj_kod_kreskowy_btn"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="@string/kod_kreskowy"
+                            android:src="@drawable/ic_cancel"
+                            android:visibility="gone" />
+
+                </RelativeLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/dostepne_dania_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/dania_recyclerview"
+                        android:scrollbars="vertical" />
 
             </LinearLayout>
 
-            <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp">
-
-                <EditText
-                        android:id="@+id/wyszukaj_danie_edt"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@drawable/rounded_rectangle_searchbar"
-                        android:hint="@string/danie"
-                        android:inputType="text"
-                        android:paddingStart="52dp"
-                        android:paddingTop="16dp"
-                        android:paddingEnd="24dp"
-                        android:paddingBottom="16dp" />
-
-                <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="16dp"
-                        android:src="@drawable/ic_search" />
-
-                <ImageButton
-                        android:id="@+id/skanuj_kod_kreskowy_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="24dp"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="@string/kod_kreskowy"
-                        android:src="@drawable/barcode_scan" />
-
-                <ImageButton
-                        android:id="@+id/wyczysc_wyszukiwanie_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginEnd="16dp"
-                        android:layout_toStartOf="@+id/skanuj_kod_kreskowy_btn"
-                        android:background="@android:color/transparent"
-                        android:contentDescription="@string/kod_kreskowy"
-                        android:src="@drawable/ic_cancel"
-                        android:visibility="gone" />
-
-            </RelativeLayout>
-
-            <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/dostepne_dania_rv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:layout_marginEnd="40dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/dania_recyclerview"
-                    android:scrollbars="vertical" />
 
         </LinearLayout>
+    </ScrollView>
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

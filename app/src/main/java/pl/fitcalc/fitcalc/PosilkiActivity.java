@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -24,6 +25,7 @@ public class PosilkiActivity extends AppCompatActivity {
     private RecyclerView dostepneDaniaRecyclerView;
     private DostepneDaniaAdapter dostepneDaniaAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ImageButton wyczysc_wyszukiwanie_btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +53,8 @@ public class PosilkiActivity extends AppCompatActivity {
             }
         });
 
-        EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
+
+        final EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
         wyszukajDanieEditText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -68,8 +71,10 @@ public class PosilkiActivity extends AppCompatActivity {
                     int repeats = Integer.parseInt(text);
                     values = new String[repeats];
                     Arrays.fill(values, "Snickers");
+                    wyczysc_wyszukiwanie_btn.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                     values = new String[]{};
+                    wyczysc_wyszukiwanie_btn.setVisibility(View.GONE);
                 }
                 dostepneDaniaAdapter.update(values);
             }
@@ -77,6 +82,14 @@ public class PosilkiActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        wyczysc_wyszukiwanie_btn = (ImageButton) findViewById(R.id.wyczysc_wyszukiwanie_btn);
+        wyczysc_wyszukiwanie_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                wyszukajDanieEditText.setText("");
             }
         });
 
