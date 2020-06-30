@@ -1,9 +1,112 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorAccent"
+            android:orientation="vertical">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/posilek_tv"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:layout_weight="1"
+                    android:text="Śniadanie"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/CzasPosilku"
+                    android:textColor="@android:color/white" />
+
+            <Button
+                    android:id="@+id/godzina_posilku_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/contour_white"
+                    android:textColor="@android:color/white" />
+
+        </LinearLayout>
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="16dp">
+
+            <EditText
+                    android:id="@+id/wyszukaj_danie_edt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_rectangle_searchbar"
+                    android:hint="@string/danie"
+                    android:inputType="text"
+                    android:paddingStart="52dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="24dp"
+                    android:paddingBottom="16dp" />
+
+            <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="16dp"
+                    android:src="@drawable/ic_search" />
+
+            <ImageButton
+                    android:id="@+id/skanuj_kod_kreskowy_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="24dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/kod_kreskowy"
+                    android:src="@drawable/barcode_scan" />
+
+            <ImageButton
+                    android:id="@+id/wyczysc_wyszukiwanie_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:layout_toStartOf="@+id/skanuj_kod_kreskowy_btn"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/kod_kreskowy"
+                    android:src="@drawable/ic_cancel"
+                    android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/dostepne_dania_rv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginEnd="40dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/dania_recyclerview"
+                android:scrollbars="vertical" />
+
+    </LinearLayout>
 
     <ScrollView
             android:layout_width="match_parent"
@@ -12,144 +115,121 @@
             tools:context=".PosilkiActivity">
 
         <LinearLayout
+                android:id="@+id/zjedzone_dania_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:minHeight="200dp"
                 android:orientation="vertical">
 
-            <LinearLayout
-                    android:layout_width="match_parent"
+            <ImageView
+                    android:layout_width="72dp"
+                    android:layout_height="72dp"
+                    android:alpha="0.5"
+                    android:src="@drawable/ic_fastfood" />
+
+            <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/colorAccent"
-                    android:orientation="vertical">
-
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                    <TextView
-                            android:id="@+id/posilek_tv"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="16dp"
-                            android:layout_weight="1"
-                            android:text="Śniadanie"
-                            android:textColor="@android:color/white"
-                            android:textSize="24sp" />
-
-                    <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/CzasPosilku"
-                            android:textColor="@android:color/white" />
-
-                    <Button
-                            android:id="@+id/godzina_posilku_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/contour_white"
-                            android:textColor="@android:color/white" />
-
-                </LinearLayout>
-
-                <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
-                        android:layout_marginEnd="16dp">
-
-                    <EditText
-                            android:id="@+id/wyszukaj_danie_edt"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:background="@drawable/rounded_rectangle_searchbar"
-                            android:hint="@string/danie"
-                            android:inputType="text"
-                            android:paddingStart="52dp"
-                            android:paddingTop="16dp"
-                            android:paddingEnd="24dp"
-                            android:paddingBottom="16dp" />
-
-                    <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginStart="16dp"
-                            android:src="@drawable/ic_search" />
-
-                    <ImageButton
-                            android:id="@+id/skanuj_kod_kreskowy_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentEnd="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="24dp"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="@string/kod_kreskowy"
-                            android:src="@drawable/barcode_scan" />
-
-                    <ImageButton
-                            android:id="@+id/wyczysc_wyszukiwanie_btn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginEnd="16dp"
-                            android:layout_toStartOf="@+id/skanuj_kod_kreskowy_btn"
-                            android:background="@android:color/transparent"
-                            android:contentDescription="@string/kod_kreskowy"
-                            android:src="@drawable/ic_cancel"
-                            android:visibility="gone" />
-
-                </RelativeLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/dostepne_dania_rv"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="40dp"
-                        android:layout_marginEnd="40dp"
-                        android:layout_marginBottom="16dp"
-                        android:background="@drawable/dania_recyclerview"
-                        android:scrollbars="vertical" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                    android:id="@+id/zjedzone_dania_placeholder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center"
-                    android:minHeight="200dp"
-                    android:orientation="vertical">
-
-                <ImageView
-                        android:layout_width="72dp"
-                        android:layout_height="72dp"
-                        android:alpha="0.5"
-                        android:src="@drawable/ic_fastfood" />
-
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/dodaj_danie_do_posilku" />
-
-            </LinearLayout>
+                    android:layout_marginTop="8dp"
+                    android:text="@string/dodaj_danie_do_posilku" />
 
         </LinearLayout>
 
+
     </ScrollView>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
-    </LinearLayout>
+        <View
+                android:id="@+id/carbs_bar"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:background="#247BA0"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.6" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/weglowodany"
+                app:layout_constraintBottom_toBottomOf="@id/carbs_bar"
+                app:layout_constraintEnd_toStartOf="@+id/carbs_bar"
+                app:layout_constraintTop_toTopOf="@id/carbs_bar" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="45%"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/carbs_bar"
+                app:layout_constraintEnd_toEndOf="@+id/carbs_bar"
+                app:layout_constraintStart_toStartOf="@+id/carbs_bar"
+                app:layout_constraintTop_toTopOf="@id/carbs_bar" />
+
+        <View
+                android:id="@+id/proteins_bar"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:background="#52B788"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/carbs_bar"
+                app:layout_constraintWidth_percent="0.45" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/bialka"
+                app:layout_constraintBottom_toBottomOf="@id/proteins_bar"
+                app:layout_constraintEnd_toStartOf="@+id/proteins_bar"
+                app:layout_constraintTop_toTopOf="@id/proteins_bar" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="34%"
+                android:textColor="@android:color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/proteins_bar"
+                app:layout_constraintEnd_toEndOf="@+id/proteins_bar"
+                app:layout_constraintStart_toStartOf="@+id/proteins_bar"
+                app:layout_constraintTop_toTopOf="@id/proteins_bar" />
+
+        <View
+                android:id="@+id/fats_bar"
+                android:layout_width="0dp"
+                android:layout_height="24dp"
+                android:background="#F9DB6D"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/proteins_bar"
+                app:layout_constraintWidth_percent="0.3" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:text="@string/tluszcze"
+                app:layout_constraintBottom_toBottomOf="@id/fats_bar"
+                app:layout_constraintEnd_toStartOf="@+id/fats_bar"
+                app:layout_constraintTop_toTopOf="@id/fats_bar" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="26%"
+                android:textColor="@android:color/black"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="@id/fats_bar"
+                app:layout_constraintEnd_toEndOf="@+id/fats_bar"
+                app:layout_constraintStart_toStartOf="@+id/fats_bar"
+                app:layout_constraintTop_toTopOf="@id/fats_bar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

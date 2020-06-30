@@ -72,4 +72,7 @@
     <string name="danie">Danie</string>
     <string name="kod_kreskowy">Zeskanuj kod kreskowy produktu</string>
     <string name="dodaj_danie_do_posilku">Dodaj danie do posiłku</string>
+    <string name="weglowodany">Węglowodany</string>
+    <string name="bialka">Białka</string>
+    <string name="tluszcze">Tłuszcze</string>
 </resources>
