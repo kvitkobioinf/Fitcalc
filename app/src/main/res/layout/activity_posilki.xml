@@ -118,8 +118,32 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                    android:id="@+id/zjedzone_dania_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="200dp"
+                    android:orientation="vertical">
+
+                <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:alpha="0.5"
+                        android:src="@drawable/ic_fastfood" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/dodaj_danie_do_posilku" />
+
+            </LinearLayout>
 
         </LinearLayout>
+
     </ScrollView>
 
     <LinearLayout

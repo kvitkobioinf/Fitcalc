@@ -7,6 +7,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -26,6 +27,7 @@ public class PosilkiActivity extends AppCompatActivity {
     private DostepneDaniaAdapter dostepneDaniaAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private ImageButton wyczysc_wyszukiwanie_btn;
+    private View zjedzone_dania_placeholder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +84,16 @@ public class PosilkiActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        zjedzone_dania_placeholder = findViewById(R.id.zjedzone_dania_placeholder);
+        zjedzone_dania_placeholder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (wyszukajDanieEditText.requestFocus()) {
+                    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
+                }
             }
         });
 
