@@ -2,15 +2,28 @@ package pl.fitcalc.fitcalc;
 
 import android.app.TimePickerDialog;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class PosilkiActivity extends AppCompatActivity {
+    private RecyclerView dostepneDaniaRecyclerView;
+    private DostepneDaniaAdapter dostepneDaniaAdapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +39,7 @@ public class PosilkiActivity extends AppCompatActivity {
         wybierz_godzine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimePickerDialog godzinaPosilku = new TimePickerDialog(PosilkiActivity.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth, new TimePickerDialog.OnTimeSetListener() {
+                TimePickerDialog godzinaPosilku = new TimePickerDialog(PosilkiActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int wybrana_godzina, int wybrana_minuta) {
                         wybierz_godzine.setText(String.valueOf(wybrana_godzina) + ':' + dodajWiodaceZero(wybrana_minuta));
@@ -38,6 +51,41 @@ public class PosilkiActivity extends AppCompatActivity {
             }
         });
 
+        EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
+        wyszukajDanieEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                String text = charSequence.toString();
+
+                // Testowo
+                String[] values;
+                try {
+                    int repeats = Integer.parseInt(text);
+                    values = new String[repeats];
+                    Arrays.fill(values, "Snickers");
+                } catch (Exception e) {
+                    values = new String[]{};
+                }
+                dostepneDaniaAdapter.update(values);
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+            }
+        });
+
+        layoutManager = new LinearLayoutManager(this);
+        dostepneDaniaRecyclerView = (RecyclerView) findViewById(R.id.dostepne_dania_rv);
+        dostepneDaniaRecyclerView.setLayoutManager(layoutManager);
+        int maxHeight = Math.round(getResources().getDimension(R.dimen.dostepne_dania_max_height));
+        dostepneDaniaAdapter = new DostepneDaniaAdapter(new String[]{}, dostepneDaniaRecyclerView, maxHeight);
+        dostepneDaniaRecyclerView.setAdapter(dostepneDaniaAdapter);
     }
 
     private String dodajWiodaceZero(int liczba) {
@@ -45,4 +93,56 @@ public class PosilkiActivity extends AppCompatActivity {
     }
 
 
+    public static class DostepneDaniaAdapter extends RecyclerView.Adapter<DostepneDaniaAdapter.DostepneDaniaVH> {
+        private String[] dania;
+        private RecyclerView dostepneDaniaRecyclerView;
+        private int maxHeight;
+
+        public static class DostepneDaniaVH extends RecyclerView.ViewHolder {
+            public TextView textView;
+
+            public DostepneDaniaVH(TextView v) {
+                super(v);
+                textView = v;
+            }
+        }
+
+        public DostepneDaniaAdapter(String[] myDataset, RecyclerView recyclerView, int maxHeight) {
+            dania = myDataset;
+            dostepneDaniaRecyclerView = recyclerView;
+            this.maxHeight = maxHeight;
+        }
+
+
+        public void update(String[] dataset) {
+            dania = dataset;
+            ViewGroup.LayoutParams params = dostepneDaniaRecyclerView.getLayoutParams();
+            if (getItemCount() > 5) {
+                params.height = this.maxHeight;
+                dostepneDaniaRecyclerView.setLayoutParams(params);
+            } else {
+                params.height = RecyclerView.LayoutParams.WRAP_CONTENT;
+                dostepneDaniaRecyclerView.setLayoutParams(params);
+            }
+            notifyDataSetChanged();
+        }
+
+        @NonNull
+        @Override
+        public DostepneDaniaAdapter.DostepneDaniaVH onCreateViewHolder(ViewGroup parent, int viewType) {
+            TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.danie_textview, parent, false);
+            DostepneDaniaVH vh = new DostepneDaniaVH(v);
+            return vh;
+        }
+
+        @Override
+        public void onBindViewHolder(DostepneDaniaVH holder, int position) {
+            holder.textView.setText(dania[position]);
+        }
+
+        @Override
+        public int getItemCount() {
+            return dania.length;
+        }
+    }
 }

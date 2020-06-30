@@ -53,11 +53,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp">
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp">
 
                 <EditText
-                        android:id="@+id/wyszukaj_produkt_edt"
+                        android:id="@+id/wyszukaj_danie_edt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@drawable/rounded_rectangle_searchbar"
@@ -99,6 +99,16 @@
                         android:visibility="gone" />
 
             </RelativeLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dostepne_dania_rv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/dania_recyclerview"
+                    android:scrollbars="vertical" />
 
         </LinearLayout>
 
