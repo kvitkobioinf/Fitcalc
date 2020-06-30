@@ -21,10 +21,19 @@ public class RejestracjaGlowna extends AppCompatActivity {
     private static final String TAG = "Rejestracjaglowna";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
+    DBAdapter db; // inicjujemy zmienną do przechowywania odnośnika do klasy pomocniczej (DBAdapter.class) obsługi bazy danych
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rejestracja_glowna);
+
+        db = new DBAdapter(this); // tworzymy i przypisujemy nowy obiekt
+
+//        Dla Darii :)
+//        Bezpośrednio przed operacją na bazie danych (np. pobraniem czy jak tutaj - dodaniem - danych) otwórz połączenie poprzez funkcję db.open();
+//        Zaś bezpośrednio po operacji zamknij połącznie poprzez db.close();
+//        Nie pamiętałem, że to się tak robi - bardzo często otwiera się i zamyka połączenie w Androidzie.
 
         mDisplayDate = (TextView) findViewById(R.id.kalendarz);
         mDisplayDate.setOnClickListener(new View.OnClickListener() {
@@ -34,7 +43,6 @@ public class RejestracjaGlowna extends AppCompatActivity {
                 int year = cal.get(Calendar.YEAR);
                 int month = cal.get(Calendar.MONTH);
                 int day = cal.get(Calendar.DAY_OF_MONTH);
-
 
                 DatePickerDialog dialog = new DatePickerDialog(RejestracjaGlowna.this, android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                         mDateSetListener,
@@ -63,6 +71,4 @@ public class RejestracjaGlowna extends AppCompatActivity {
         });
 
     }
-
-
 }
