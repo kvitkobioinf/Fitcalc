@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#CD5C5C</color>
-    <color name="colorPrimaryDark">#CD5C5C</color>
-    <color name="colorAccent">#CD5C5C</color>
+    <color name="colorPrimaryDark">#CC4B4B</color>
+    <color name="colorAccent">#CC4B4B</color>
+
     <color name="grey">#666666</color>
     <color name="lightGrey">#0D000000</color>
+    <color name="logoGreen">#3DDC84</color>
+
+<!--    Posilki-->
+    <color name="cultured">#F8F7F9</color>
+    <color name="spaceCadet">#2B2D42</color>
+    <color name="middleBlue">#92DCE5</color>
+    <color name="corn">#F7EC59</color>
+
+<!--    Welcome-->
+    <color name="welcomeViolet">#8E92B8</color>
+    <color name="welcomeVioletButton">#CBC0E2</color>
 </resources>

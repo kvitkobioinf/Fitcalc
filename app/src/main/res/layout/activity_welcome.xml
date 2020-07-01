@@ -4,6 +4,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/welcomeViolet"
         tools:context=".WelcomeActivity">
 
     <ImageView
@@ -42,9 +43,9 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
             android:layout_weight="1"
-            android:background="@drawable/rounded_rectangle_button_selector"
+            android:background="@drawable/welcome_button_selector"
             android:text="@string/Zaczynamy"
-            android:textColor="@drawable/rounded_rectangle_button_text_selector"
+            android:textColor="@drawable/welcome_button_text_selector"
             app:layout_constraintBottom_toTopOf="@+id/terms_tv"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

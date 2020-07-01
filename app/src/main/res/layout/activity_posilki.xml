@@ -4,12 +4,13 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
         android:orientation="vertical">
 
     <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
+            android:background="@color/colorPrimary"
             android:orientation="vertical">
 
         <LinearLayout
@@ -115,27 +116,53 @@
             tools:context=".PosilkiActivity">
 
         <LinearLayout
-                android:id="@+id/zjedzone_dania_placeholder"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:minHeight="200dp"
                 android:orientation="vertical">
 
-            <ImageView
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:alpha="0.5"
-                    android:src="@drawable/ic_fastfood" />
-
-            <TextView
-                    android:layout_width="wrap_content"
+            <LinearLayout
+                    android:id="@+id/zjedzone_dania_placeholder"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/dodaj_danie_do_posilku" />
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minHeight="200dp"
+                    android:orientation="vertical">
 
+                <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:src="@drawable/ic_fastfood" />
+
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/dodaj_danie_do_posilku"
+                        android:textColor="@android:color/white" />
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="32dp"
+                            android:background="@drawable/zjedzone_dane_recycerview"
+                            android:elevation="5dp">
+
+                        <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="32dp"
+                                android:text="Snickers" />
+                    </RelativeLayout>
+
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
 
@@ -143,7 +170,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
         <View
                 android:id="@+id/carbs_bar"
@@ -178,7 +206,7 @@
                 android:id="@+id/proteins_bar"
                 android:layout_width="0dp"
                 android:layout_height="24dp"
-                android:background="#52B788"
+                android:background="#38B460"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/carbs_bar"
                 app:layout_constraintWidth_percent="0.45" />
@@ -207,7 +235,7 @@
                 android:id="@+id/fats_bar"
                 android:layout_width="0dp"
                 android:layout_height="24dp"
-                android:background="#F9DB6D"
+                android:background="#EAB346"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/proteins_bar"
                 app:layout_constraintWidth_percent="0.3" />
