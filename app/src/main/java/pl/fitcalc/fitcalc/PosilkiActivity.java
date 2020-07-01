@@ -19,8 +19,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
+
+import lecho.lib.hellocharts.model.PieChartData;
+import lecho.lib.hellocharts.model.SliceValue;
+import lecho.lib.hellocharts.view.PieChartView;
 
 public class PosilkiActivity extends AppCompatActivity {
     private RecyclerView dostepneDaniaRecyclerView;
@@ -28,6 +34,7 @@ public class PosilkiActivity extends AppCompatActivity {
     private RecyclerView.LayoutManager layoutManager;
     private ImageButton wyczysc_wyszukiwanie_btn;
     private View zjedzone_dania_placeholder;
+    private PieChartView weglowodanyPieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +62,15 @@ public class PosilkiActivity extends AppCompatActivity {
             }
         });
 
+        List<SliceValue> zjedzoneWeglowodany = new ArrayList<SliceValue>();
+        zjedzoneWeglowodany.add(new SliceValue(0.3f, getColor(R.color.corn)));
+        zjedzoneWeglowodany.add(new SliceValue(0.7f, getColor(R.color.middleBlue)));
+        PieChartData zjedzoneWeglowodanyData = new PieChartData();
+        zjedzoneWeglowodanyData.setValues(zjedzoneWeglowodany);
+
+        weglowodanyPieChart = (PieChartView) findViewById(R.id.carbs_piechart);
+        weglowodanyPieChart.setChartRotationEnabled(false);
+        weglowodanyPieChart.setPieChartData(zjedzoneWeglowodanyData);
 
         final EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
         wyszukajDanieEditText.addTextChangedListener(new TextWatcher() {

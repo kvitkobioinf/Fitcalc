@@ -120,6 +120,11 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+            <lecho.lib.hellocharts.view.PieChartView
+                    android:id="@+id/carbs_piechart"
+                    android:layout_width="128dp"
+                    android:layout_height="128dp" />
+
             <LinearLayout
                     android:id="@+id/zjedzone_dania_placeholder"
                     android:layout_width="match_parent"
