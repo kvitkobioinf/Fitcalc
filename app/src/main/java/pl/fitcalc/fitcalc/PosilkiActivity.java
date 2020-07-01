@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
+import lecho.lib.hellocharts.listener.PieChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
@@ -35,6 +37,8 @@ public class PosilkiActivity extends AppCompatActivity {
     private ImageButton wyczysc_wyszukiwanie_btn;
     private View zjedzone_dania_placeholder;
     private PieChartView weglowodanyPieChart;
+    private PieChartView bialkaPieChart;
+    private PieChartView tluszczePieChart;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,14 +67,47 @@ public class PosilkiActivity extends AppCompatActivity {
         });
 
         List<SliceValue> zjedzoneWeglowodany = new ArrayList<SliceValue>();
-        zjedzoneWeglowodany.add(new SliceValue(0.3f, getColor(R.color.corn)));
-        zjedzoneWeglowodany.add(new SliceValue(0.7f, getColor(R.color.middleBlue)));
+        zjedzoneWeglowodany.add(new SliceValue(0.3f, getColor(android.R.color.transparent)));
+        zjedzoneWeglowodany.add(new SliceValue(0.7f, getColor(R.color.mediumPurple)));
         PieChartData zjedzoneWeglowodanyData = new PieChartData();
         zjedzoneWeglowodanyData.setValues(zjedzoneWeglowodany);
 
         weglowodanyPieChart = (PieChartView) findViewById(R.id.carbs_piechart);
-        weglowodanyPieChart.setChartRotationEnabled(false);
+        weglowodanyPieChart.setChartRotationEnabled(true);
         weglowodanyPieChart.setPieChartData(zjedzoneWeglowodanyData);
+        weglowodanyPieChart.setOnValueTouchListener(new PieChartOnValueSelectListener() {
+            @Override
+            public void onValueSelected(int arcIndex, SliceValue value) {
+                Toast.makeText(PosilkiActivity.this, "Wybrano " + arcIndex, Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onValueDeselected() {
+
+            }
+        });
+
+
+        List<SliceValue> zjedzoneBialka = new ArrayList<SliceValue>();
+        zjedzoneBialka.add(new SliceValue(0.3f, getColor(R.color.middleBlue)));
+        zjedzoneBialka.add(new SliceValue(0.7f, getColor(R.color.skyBlueCrayola)));
+        PieChartData zjedzoneBialkaData = new PieChartData();
+        zjedzoneBialkaData.setValues(zjedzoneBialka);
+
+        bialkaPieChart = (PieChartView) findViewById(R.id.proteins_piechart);
+        bialkaPieChart.setChartRotationEnabled(true);
+        bialkaPieChart.setPieChartData(zjedzoneBialkaData);
+
+
+        List<SliceValue> zjedzoneTluszcze = new ArrayList<SliceValue>();
+        zjedzoneTluszcze.add(new SliceValue(0.3f, getColor(android.R.color.transparent)));
+        zjedzoneTluszcze.add(new SliceValue(0.7f, getColor(R.color.corn)));
+        PieChartData zjedzoneTluszczeData = new PieChartData();
+        zjedzoneTluszczeData.setValues(zjedzoneTluszcze);
+
+        tluszczePieChart = (PieChartView) findViewById(R.id.fats_piechart);
+        tluszczePieChart.setChartRotationEnabled(true);
+        tluszczePieChart.setPieChartData(zjedzoneTluszczeData);
 
         final EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
         wyszukajDanieEditText.addTextChangedListener(new TextWatcher() {

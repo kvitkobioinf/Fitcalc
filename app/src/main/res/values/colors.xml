@@ -12,7 +12,15 @@
     <color name="cultured">#F8F7F9</color>
     <color name="spaceCadet">#2B2D42</color>
     <color name="middleBlue">#92DCE5</color>
+    <color name="skyBlueCrayola">#46DEF2</color>
     <color name="corn">#F7EC59</color>
+
+    <color name="starCommandBlue">#067BC2</color>
+    <color name="blueSapphire">#175676</color>
+
+    <color name="mediumPurple">#9381FF</color>
+
+    <color name="celadonBlue">#247BA0</color>
 
 <!--    Welcome-->
     <color name="welcomeViolet">#8E92B8</color>
