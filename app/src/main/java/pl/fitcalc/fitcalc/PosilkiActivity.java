@@ -109,6 +109,19 @@ public class PosilkiActivity extends AppCompatActivity {
         tluszczePieChart.setChartRotationEnabled(true);
         tluszczePieChart.setPieChartData(zjedzoneTluszczeData);
 
+
+        List<SliceValue> zjedzoneElementy = new ArrayList<SliceValue>();
+        zjedzoneElementy.add(new SliceValue(0.3f, getColor(R.color.middleBlue)));
+        zjedzoneElementy.add(new SliceValue(0.6f, getColor(R.color.corn)));
+        zjedzoneElementy.add(new SliceValue(0.1f, getColor(R.color.androidGreen)));
+        PieChartData zjedzoneElementyData = new PieChartData();
+        zjedzoneElementyData.setValues(zjedzoneElementy);
+
+        PieChartView elementyPieChart = (PieChartView) findViewById(R.id.elements_piechart);
+        elementyPieChart.setChartRotationEnabled(true);
+        elementyPieChart.setPieChartData(zjedzoneElementyData);
+
+
         final EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
         wyszukajDanieEditText.addTextChangedListener(new TextWatcher() {
             @Override

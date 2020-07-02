@@ -120,6 +120,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:elevation="8dp"
+                    android:gravity="center">
+
+                <lecho.lib.hellocharts.view.PieChartView
+                        android:id="@+id/elements_piechart"
+                        android:layout_width="128dp"
+                        android:layout_height="128dp"
+                        android:layout_margin="16dp" />
+
+            </LinearLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/udzialy_procentowe"
                     android:layout_width="match_parent"
@@ -127,7 +141,8 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="8dp">
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone">
 
                 <lecho.lib.hellocharts.view.PieChartView
                         android:id="@+id/carbs_piechart"
@@ -167,7 +182,8 @@
                     android:focusable="true"
                     android:gravity="center"
                     android:minHeight="200dp"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:visibility="gone">
 
                 <ImageView
                         android:layout_width="72dp"
@@ -181,66 +197,66 @@
                         android:text="@string/dodaj_danie_do_posilku"
                         android:textColor="@android:color/white" />
 
-                <LinearLayout
-                        android:layout_width="match_parent"
+            </LinearLayout>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <ImageButton
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/posilek_actionbutton_selector"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_delete_outline" />
+
+                <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/zjedzone_dane_recycerview"
+                        android:elevation="8dp"
                         android:orientation="horizontal">
 
-                    <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:background="@drawable/posilek_actionbutton_selector"
-                            android:padding="4dp"
-                            android:src="@drawable/ic_delete_outline" />
-
-                    <LinearLayout
+                    <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
+                            android:layout_marginStart="24dp"
                             android:layout_marginTop="16dp"
-                            android:layout_marginEnd="8dp"
+                            android:layout_marginEnd="16dp"
                             android:layout_marginBottom="16dp"
                             android:layout_weight="1"
-                            android:background="@drawable/zjedzone_dane_recycerview"
-                            android:elevation="8dp"
-                            android:orientation="horizontal">
+                            android:text="Snickers (80g)"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
-                        <TextView
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="24dp"
-                                android:layout_marginTop="16dp"
-                                android:layout_marginEnd="16dp"
-                                android:layout_marginBottom="16dp"
-                                android:layout_weight="1"
-                                android:text="Snickers"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                        <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginEnd="24dp"
-                                android:text="T 35% B 34% W 34%" />
-
-                    </LinearLayout>
-
-                    <ImageButton
+                    <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="8dp"
-                            android:background="@drawable/posilek_actionbutton_selector"
-                            android:padding="4dp"
-                            android:src="@drawable/ic_edit" />
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginEnd="24dp"
+                            android:text="T 35% B 34% W 34%" />
 
                 </LinearLayout>
 
-            </LinearLayout>
-        </LinearLayout>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/posilek_actionbutton_selector"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_edit" />
 
+            </LinearLayout>
+
+        </LinearLayout>
 
     </ScrollView>
 

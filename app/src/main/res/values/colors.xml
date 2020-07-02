@@ -20,6 +20,10 @@
 
     <color name="mediumPurple">#9381FF</color>
 
+    <color name="androidGreen">#9BC53D</color>
+    <color name="minionYellow">#FDE74C</color>
+    <color name="cyanProcess">#5BC0EB</color>
+
     <color name="celadonBlue">#247BA0</color>
 
 <!--    Welcome-->
