@@ -24,6 +24,7 @@ public class WelcomeActivity extends AppCompatActivity {
         Log.d("probabazydanych", String.valueOf(numberRows));
 
 //        db.insert("users", "first_name, last_name, email, password, birthday, sex, body_type", "'Darya', 'Boginskaya', 'boginskad@gmail.com', 'marcopolo', '27/11/1996', 'female', 'exomatic'");
+        db.insert("users", "first_name, last_name, email, password, birthday, sex, body_type", "'ALek', 'L', 'test@test.pl', 'marcopolo', '27/11/1996', 'female', 'exomatic'");
 //        db.insert("users", "email, password", "'a', 'b'");
 
         numberRows = db.count("users");

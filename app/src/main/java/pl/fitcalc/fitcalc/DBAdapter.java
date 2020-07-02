@@ -11,7 +11,7 @@ import android.util.Log;
 public class DBAdapter {
 
     private static final String databaseName = "fitCalc";
-    private static final int databaseVersion = 8;
+    private static final int databaseVersion = 9;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -87,6 +87,9 @@ public class DBAdapter {
 
             db.execSQL("CREATE TABLE IF NOT EXISTS owner (" +
                     " user_id INTEGER);");
+
+             db.execSQL("INSERT INTO owner (user_id) VALUES (0)");
+
         }
 
         @Override
