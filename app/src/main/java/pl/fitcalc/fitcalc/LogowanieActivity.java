@@ -1,13 +1,13 @@
 package pl.fitcalc.fitcalc;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class LogowanieActivity extends AppCompatActivity {
     DBAdapter db;
@@ -26,13 +26,12 @@ public class LogowanieActivity extends AppCompatActivity {
         zaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString());
+                long user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString());
 
-                if(user_id != 0) {
+                if (user_id != -1) {
                     Intent zaloguj_intent = new Intent(LogowanieActivity.this, WyborPosilkuActivity.class);
                     startActivity(zaloguj_intent);
-                }
-                else {
+                } else {
                     Toast.makeText(LogowanieActivity.this, "Nieprawidłowe dane logowania", Toast.LENGTH_SHORT).show();
                 }
             }
