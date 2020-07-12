@@ -26,7 +26,7 @@ public class LogowanieActivity extends AppCompatActivity {
         zaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                long user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString());
+                long user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString(), LogowanieActivity.this);
 
                 if (user_id != -1) {
                     Intent zaloguj_intent = new Intent(LogowanieActivity.this, WyborPosilkuActivity.class);

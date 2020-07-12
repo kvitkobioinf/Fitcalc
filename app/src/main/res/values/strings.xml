@@ -76,4 +76,5 @@
     <string name="weglowodany">Węglowodany</string>
     <string name="bialka">Białka</string>
     <string name="tluszcze">Tłuszcze</string>
+    <string name="uzytkownik_id_klucz">user_id_key</string>
 </resources>

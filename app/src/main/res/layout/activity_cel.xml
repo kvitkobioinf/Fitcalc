@@ -1,79 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="50dp"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".CelActivity">
-
-    <TextView
-        android:id="@+id/cel"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:text="@string/wybierzcel"
-        android:textSize="20sp"
-        android:textColor="#000"/>
+        android:layout_height="match_parent">
 
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="50dp"
+            tools:context=".CelActivity">
 
-    <TextView
-        android:id="@+id/docelowawaga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:layout_marginTop="20dp"
-        android:textColor="#000"
-        android:text="@string/wpiszswojawage"
-        android:textSize="20sp" />
-    <EditText
-        android:id="@+id/textwaga"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:autofillHints=""
-        android:ems="10"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/kontur_color"
-        android:padding="10dp"
-        android:hint="@string/licbawaga"
-        android:inputType="numberDecimal" />
+        <TextView
+                android:id="@+id/cel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wybierzcel"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/utrata"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/Utrata"
-        android:background="@drawable/btn_color"
-        android:textColor="#fafafa"/>
+        <TextView
+                android:id="@+id/docelowawaga"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="@string/wpiszswojawage"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/zachowanie"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/ZachowanieMasy"
-        android:background="@drawable/btn_color"
-        android:textColor="#fafafa"/>
+        <EditText
+                android:id="@+id/textwaga"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:autofillHints=""
+                android:background="@drawable/kontur_color"
+                android:ems="10"
+                android:hint="@string/licbawaga"
+                android:inputType="numberDecimal"
+                android:padding="10dp"
+                android:textAlignment="center" />
 
-    <Button
-        android:id="@+id/nabor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/NaborMasy"
-        android:background="@drawable/btn_color"
-        android:textColor="#fafafa"/>
+        <Button
+                android:id="@+id/utrata"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/btn_color"
+                android:text="@string/Utrata"
+                android:textColor="#fafafa" />
 
+        <Button
+                android:id="@+id/zachowanie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/btn_color"
+                android:text="@string/ZachowanieMasy"
+                android:textColor="#fafafa" />
 
+        <Button
+                android:id="@+id/nabor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/btn_color"
+                android:text="@string/NaborMasy"
+                android:textColor="#fafafa" />
 
-
-</LinearLayout>
-
+    </LinearLayout>
 
 </ScrollView>

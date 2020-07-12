@@ -1,6 +1,7 @@
 package pl.fitcalc.fitcalc;
 
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -15,7 +16,7 @@ import java.security.MessageDigest;
 public class DBAdapter {
 
     private static final String databaseName = "fitCalc";
-    private static final int databaseVersion = 10;
+    private static final int databaseVersion = 11;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -88,11 +89,6 @@ public class DBAdapter {
                     " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " name VARCHAR, " +
                     " kcal_share INTEGER);");
-
-            db.execSQL("CREATE TABLE IF NOT EXISTS owner (" +
-                    " user_id INTEGER);");
-
-            db.execSQL("INSERT INTO owner(user_id) VALUES(0)");
         }
 
         @Override
@@ -102,7 +98,6 @@ public class DBAdapter {
             db.execSQL("DROP TABLE IF EXISTS user_measurements");
             db.execSQL("DROP TABLE IF EXISTS user_meals");
             db.execSQL("DROP TABLE IF EXISTS meals");
-            db.execSQL("DROP TABLE IF EXISTS owner");
 
             onCreate(db);
 
@@ -131,7 +126,7 @@ public class DBAdapter {
         return count;
     }
 
-    public long logUserIn(String email, String password) {
+    public long logUserIn(String email, String password, Activity activity) {
         password = encodePassword(password); // poszukiwanie w bazie hasła zaszyfrowanego
         Cursor cursor = db.rawQuery("SELECT id FROM users WHERE email = '" + email + "' AND password = '" + password + "'", null);
         long user_id = -1;
@@ -141,7 +136,7 @@ public class DBAdapter {
             cursor.close();
 
             if (user_id != -1) // znaleziono użytkownika
-                db.execSQL("UPDATE owner SET user_id = " + user_id);
+                Ustawienia.setUserId(activity, user_id);
         } catch (Exception ignored) {
         }
 

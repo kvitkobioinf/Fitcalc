@@ -20,7 +20,7 @@ import java.util.Objects;
 
 public class RejestracjaGlowna extends AppCompatActivity {
     private TextView mDisplayDate;
-    private static final String TAG = "Rejestracjaglowna";
+    private static final String TAG = "RejestracjaGlowna";
     private DatePickerDialog.OnDateSetListener mDateSetListener;
 
     DBAdapter db; // inicjujemy zmienną do przechowywania odnośnika do klasy pomocniczej (DBAdapter.class) obsługi bazy danych
@@ -93,7 +93,7 @@ public class RejestracjaGlowna extends AppCompatActivity {
                                         if (user_id == -1) {
                                             Toast.makeText(RejestracjaGlowna.this, "Niepowodzenie rejestracji użytkownia", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            db.logUserIn(email, haslo); // zaloguj nowoutworzonego użytkownika
+                                            db.logUserIn(email, haslo, RejestracjaGlowna.this); // zaloguj nowoutworzonego użytkownika
 
                                             Intent kontynuuj_rejestracje_intent = new Intent(RejestracjaGlowna.this, CelActivity.class);
                                             startActivity(kontynuuj_rejestracje_intent);
