@@ -27,7 +27,7 @@
         android:layout_marginHorizontal="100dp"
         android:inputType="textPassword"
         android:layout_marginBottom="40dp"
-        android:hint="@string/Hasło"
+        android:hint="@string/haslo"
         android:autofillHints=""
         android:background="@drawable/kontur_color"
         android:padding="10dp"/>

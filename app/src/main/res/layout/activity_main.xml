@@ -30,7 +30,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="1"
                 android:background="@drawable/main_button_selector"
-                android:text="@string/Zalozkonto"
+                android:text="@string/Rejestracja"
                 android:textAllCaps="false"
                 android:textColor="#fafafa"
                 android:textSize="24sp"
