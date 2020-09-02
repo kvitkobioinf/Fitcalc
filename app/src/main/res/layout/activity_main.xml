@@ -1,42 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/activity_main"
-    tools:context=".MainActivity"
-    android:gravity="center"
-    android:orientation="vertical">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/button_zaloguj"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:layout_marginTop="150dp"
-        android:paddingHorizontal="50dp"
-        android:text="@string/Logowanie"
-        android:background="@drawable/btn_color"
-        android:textColor="#fafafa"/>
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <Button
+                android:id="@+id/button_zaloguj"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/main_button_selector"
+                android:text="@string/Logowanie"
+                android:textAllCaps="false"
+                android:textColor="#fafafa"
+                android:textSize="24sp"
+                android:textStyle="normal" />
+
+
+        <Button
+                android:id="@+id/button_zaloz"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/main_button_selector"
+                android:text="@string/Zalozkonto"
+                android:textAllCaps="false"
+                android:textColor="#fafafa"
+                android:textSize="24sp"
+                android:textStyle="normal" />
+
+    </LinearLayout>
+
+    <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_above="@+id/text"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_arrow_drop_up" />
 
     <TextView
-        android:id="@+id/text"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:text="@string/Konto"
-        android:textSize="25sp"
-        android:layout_marginTop="50dp"
-        android:paddingLeft="10dp"
-        android:textColor="#000"/>
+            android:id="@+id/text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:padding="8dp"
+            android:text="@string/Konto"
+            android:textColor="@android:color/white"
+            android:textSize="26sp"
+            android:textStyle="italic" />
 
-
-    <Button
-        android:id="@+id/button_zaloz"
-        android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/Zalozkonto"
-        android:paddingHorizontal="50dp"
-        android:background="@drawable/btn_color"
-        android:textColor="#fafafa"/>
-
-</LinearLayout>
+    <ImageView
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_below="@+id/text"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_arrow_drop_down" />
+</RelativeLayout>
