@@ -9,8 +9,10 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class CelActivity extends AppCompatActivity {
+    private String cel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class CelActivity extends AppCompatActivity {
                     textwaga.append(".");
                 }
 
-                if (s.length() == 3 && before != 1 && start != 3 && s.subSequence(0,1).toString().equals("1") && s.subSequence(1,2).toString().equals("0") && !s.toString().contains(("."))){
+                if (s.length() == 3 && before != 1 && start != 3 && s.subSequence(0, 1).toString().equals("1") && s.subSequence(1, 2).toString().equals("0") && !s.toString().contains(("."))) {
                     textwaga.append(".");
                 }
             }
@@ -41,31 +43,58 @@ public class CelActivity extends AppCompatActivity {
             }
         });
 
-        Button utrata = (Button) findViewById(R.id.utrata);
+        final Button utrata = (Button) findViewById(R.id.utrata);
+        final Button zachowanie = (Button) findViewById(R.id.zachowanie);
+        final Button nabor = (Button) findViewById(R.id.nabor);
 
         utrata.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent utrata_intent = new Intent(CelActivity.this, AktywnoscActivity.class);
-                startActivity(utrata_intent);
+                cel = "utrata";
+
+                v.setSelected(false);
+                nabor.setSelected(true);
+                zachowanie.setSelected(true);
             }
         });
 
-        Button zachowanie = (Button) findViewById(R.id.zachowanie);
         zachowanie.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent zachowanie_intent = new Intent(CelActivity.this, AktywnoscActivity.class);
-                startActivity(zachowanie_intent);
+                cel = "zachowanie";
+
+                v.setSelected(false);
+                utrata.setSelected(true);
+                nabor.setSelected(true);
             }
         });
 
-        Button nabor = (Button) findViewById(R.id.nabor);
         nabor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent nabor_intent = new Intent(CelActivity.this, AktywnoscActivity.class);
-                startActivity(nabor_intent);
+                cel = "nabor";
+
+                v.setSelected(false);
+                utrata.setSelected(true);
+                zachowanie.setSelected(true);
+            }
+        });
+
+        ((Button) findViewById(R.id.kontynuuj)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (RejestracjaGlowna.IsEmptyString(textwaga.toString())) {
+                    Toast.makeText(CelActivity.this, "Uzupełnij wagę docelową", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (RejestracjaGlowna.IsEmptyString(cel)) {
+                    Toast.makeText(CelActivity.this, "Wybierz swój cel", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                Intent aktywnosc_intent = new Intent(CelActivity.this, AktywnoscActivity.class);
+                startActivity(aktywnosc_intent);
             }
         });
     }

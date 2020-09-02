@@ -18,12 +18,13 @@
     <string name="haslo">Hasło:</string>
     <string name="PotwierdHaslo">Potwierdź hasło:</string>
     <string name="podpowiedzDaty">dd/mm/rrrr</string>
-    <string name="wybierzcel">WYBIERZ CEL</string>
+    <string name="wybierzcel">Wybierz cel</string>
     <string name="Utrata">Utrata wagi</string>
     <string name="RadioM">radioM</string>
     <string name="licbawaga">00.0</string>
     <string name="liczbawzrost">000</string>
     <string name="ZachowanieMasy">Zachowanie masy ciała</string>
+    <string name="kontynnuj">Kontynuuj</string>
     <string name="NaborMasy">Nabór masy ciała</string>
     <string name="WagaDocelowa">waga docelowa</string>
     <string name="Wiek">Wiek</string>

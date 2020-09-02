@@ -88,37 +88,37 @@ public class RejestracjaGlowna extends AppCompatActivity {
                 Intent dalej_intent = new Intent(RejestracjaGlowna.this, CelActivity.class);
 
                 String imie = imie_ed.getText().toString();
-                if (isEmptyString(imie)) {
+                if (IsEmptyString(imie)) {
                     Toast.makeText(RejestracjaGlowna.this, "Uzupełnij imię", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String nazwisko = ((EditText) findViewById(R.id.textnazwisko)).getText().toString();
-                if (isEmptyString(nazwisko)) {
+                if (IsEmptyString(nazwisko)) {
                     Toast.makeText(RejestracjaGlowna.this, "Uzupełnij nazwisko", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String urodziny = mDisplayDate.getText().toString();
-                if (isEmptyString(urodziny)) {
+                if (IsEmptyString(urodziny)) {
                     Toast.makeText(RejestracjaGlowna.this, "Uzupełnij datę urodzin", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String email = ((EditText) findViewById(R.id.textemail)).getText().toString();
-                if (isEmptyString(email)) {
+                if (IsEmptyString(email)) {
                     Toast.makeText(RejestracjaGlowna.this, "Podaj swój adres e-mail", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String haslo = ((EditText) findViewById(R.id.texthaslo)).getText().toString();
-                if (isEmptyString(haslo)) {
+                if (IsEmptyString(haslo)) {
                     Toast.makeText(RejestracjaGlowna.this, "Wybierz hasło", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 String potwierdzHaslo = ((EditText) findViewById(R.id.textpotwierdzhaslo)).getText().toString();
-                if (isEmptyString(potwierdzHaslo)) {
+                if (IsEmptyString(potwierdzHaslo)) {
                     Toast.makeText(RejestracjaGlowna.this, "Potwierdź hasło", Toast.LENGTH_SHORT).show();
                     return;
                 } else if (!potwierdzHaslo.equals(haslo)) {
@@ -155,7 +155,7 @@ public class RejestracjaGlowna extends AppCompatActivity {
         });
     }
 
-    boolean isEmptyString(String string) {
+    public static boolean IsEmptyString(String string) {
         return string == null || string.isEmpty();
     }
 }
