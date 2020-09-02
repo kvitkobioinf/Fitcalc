@@ -70,11 +70,10 @@
                     android:padding="8dp" />
         </LinearLayout>
 
-
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
+                android:layout_marginBottom="8dp"
                 android:orientation="horizontal">
 
             <TextView
@@ -100,11 +99,38 @@
 
         </LinearLayout>
 
-
-        <LinearLayout
-                android:layout_marginTop="24dp"
+        <RadioGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:orientation="horizontal">
+
+            <TextView
+                    android:id="@+id/plec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/Plec"
+                    android:textColor="#000"
+                    android:textSize="20sp" />
+
+            <RadioButton
+                    android:id="@+id/radio_kobieta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/kobieta" />
+
+            <RadioButton
+                    android:id="@+id/radio_mezczyzna"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/mezczyzna" />
+        </RadioGroup>
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:orientation="horizontal">
 
@@ -130,6 +156,7 @@
                     android:padding="8dp" />
 
         </LinearLayout>
+
 
         <LinearLayout
                 android:layout_width="match_parent"

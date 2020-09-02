@@ -28,12 +28,11 @@ public class LogowanieActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString());
 
-                if(user_id != 0) {
+                if (user_id == -1)
+                    Toast.makeText(LogowanieActivity.this, "Nieprawidłowe dane logowania", Toast.LENGTH_SHORT).show();
+                else {
                     Intent zaloguj_intent = new Intent(LogowanieActivity.this, WyborPosilkuActivity.class);
                     startActivity(zaloguj_intent);
-                }
-                else {
-                    Toast.makeText(LogowanieActivity.this, "Nieprawidłowe dane logowania", Toast.LENGTH_SHORT).show();
                 }
             }
         });

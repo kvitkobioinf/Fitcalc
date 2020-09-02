@@ -23,7 +23,9 @@
         <activity android:name=".WyborPosilkuActivity" />
         <activity android:name=".ObliczeniaActivity" />
         <activity android:name=".CelActivity" />
-        <activity android:name=".RejestracjaGlowna" />
+        <activity
+                android:name=".RejestracjaGlowna"
+                android:noHistory="true" />
         <activity android:name=".LogowanieActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

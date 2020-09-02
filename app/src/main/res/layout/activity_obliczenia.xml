@@ -65,7 +65,7 @@
             android:layout_marginRight="50dp"
             android:checked="true"
             android:labelFor="@id/plec"
-            android:text="@string/Male"
+            android:text="@string/mezczyzna"
             android:textSize="15sp" />
 
         <RadioButton
@@ -75,7 +75,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="50dp"
             android:labelFor="@id/plec"
-            android:text="@string/Female"
+            android:text="@string/kobieta"
             android:textSize="15sp" />
 
 

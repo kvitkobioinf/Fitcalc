@@ -27,9 +27,9 @@
     <string name="NaborMasy">Nabór masy ciała</string>
     <string name="WagaDocelowa">waga docelowa</string>
     <string name="Wiek">Wiek</string>
-    <string name="Plec">Płec</string>
-    <string name="Male">Male</string>
-    <string name="Female">Female</string>
+    <string name="Plec">Płec:</string>
+    <string name="mezczyzna">Mężczyzna</string>
+    <string name="kobieta">Kobieta</string>
     <string name="Waga">Waga</string>
     <string name="Wzrost">Wzrost</string>
     <string name="Atkywnosc">Twoja aktywność</string>

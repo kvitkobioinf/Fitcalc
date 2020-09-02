@@ -1,6 +1,7 @@
 package pl.fitcalc.fitcalc;
 
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -11,7 +12,7 @@ import android.util.Log;
 public class DBAdapter {
 
     private static final String databaseName = "fitCalc";
-    private static final int databaseVersion = 9;
+    private static final int databaseVersion = 10;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -33,7 +34,7 @@ public class DBAdapter {
                     " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " first_name VARCHAR, " +
                     " last_name VARCHAR, " +
-                    " email VARCHAR, " +
+                    " email VARCHAR UNIQUE, " +
                     " password VARCHAR, " +
                     " birthday VARCHAR, " +
                     " sex VARCHAR, " +
@@ -120,6 +121,10 @@ public class DBAdapter {
         db.execSQL("INSERT INTO " + table + "(" + fields + ") VALUES (" + values + ")");
     }
 
+    public long insert(String table, ContentValues values) {
+        return db.insert(table, null, values);
+    }
+
     public int count(String table) {
         Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM " + table + "", null);
         mCount.moveToFirst();
@@ -130,7 +135,19 @@ public class DBAdapter {
 
     public int logUserIn(String email, String password) {
         Cursor mCount = db.rawQuery("SELECT id FROM users WHERE email = '" + email + "' AND password = '" + password + "'", null);
-        int id = 0;
+        int id = -1;
+        try {
+            mCount.moveToFirst();
+            id = mCount.getInt(0);
+            mCount.close();
+        } catch (Exception e) {
+        }
+
+        return id;
+    }
+    public int getUserId(String email) {
+        Cursor mCount = db.rawQuery("SELECT id FROM users WHERE email = '" + email + "'", null);
+        int id = -1;
         try {
             mCount.moveToFirst();
             id = mCount.getInt(0);
