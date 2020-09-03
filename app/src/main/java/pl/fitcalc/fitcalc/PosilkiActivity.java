@@ -45,6 +45,8 @@ public class PosilkiActivity extends AppCompatActivity {
     private int meal;
     private String meal_name;
 
+    DBAdapter db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,8 @@ public class PosilkiActivity extends AppCompatActivity {
         user_id = Objects.requireNonNull(extras).getLong("user_id");
         meal = Objects.requireNonNull(extras).getInt("meal");
         meal_name = Objects.requireNonNull(extras).getString("meal_name");
+
+        db = new DBAdapter(this);
 
         ((TextView) findViewById(R.id.posilek_tv)).setText(meal_name);
 
@@ -78,50 +82,6 @@ public class PosilkiActivity extends AppCompatActivity {
             }
         });
 
-        List<SliceValue> zjedzoneWeglowodany = new ArrayList<SliceValue>();
-        zjedzoneWeglowodany.add(new SliceValue(0.3f, getColor(android.R.color.transparent)));
-        zjedzoneWeglowodany.add(new SliceValue(0.7f, getColor(R.color.mediumPurple)));
-        PieChartData zjedzoneWeglowodanyData = new PieChartData();
-        zjedzoneWeglowodanyData.setValues(zjedzoneWeglowodany);
-
-        weglowodanyPieChart = (PieChartView) findViewById(R.id.carbs_piechart);
-        weglowodanyPieChart.setChartRotationEnabled(true);
-        weglowodanyPieChart.setPieChartData(zjedzoneWeglowodanyData);
-        weglowodanyPieChart.setOnValueTouchListener(new PieChartOnValueSelectListener() {
-            @Override
-            public void onValueSelected(int arcIndex, SliceValue value) {
-                Toast.makeText(PosilkiActivity.this, "Wybrano " + arcIndex, Toast.LENGTH_SHORT).show();
-            }
-
-            @Override
-            public void onValueDeselected() {
-
-            }
-        });
-
-
-        List<SliceValue> zjedzoneBialka = new ArrayList<SliceValue>();
-        zjedzoneBialka.add(new SliceValue(0.3f, getColor(R.color.middleBlue)));
-        zjedzoneBialka.add(new SliceValue(0.7f, getColor(R.color.skyBlueCrayola)));
-        PieChartData zjedzoneBialkaData = new PieChartData();
-        zjedzoneBialkaData.setValues(zjedzoneBialka);
-
-        bialkaPieChart = (PieChartView) findViewById(R.id.proteins_piechart);
-        bialkaPieChart.setChartRotationEnabled(true);
-        bialkaPieChart.setPieChartData(zjedzoneBialkaData);
-
-
-        List<SliceValue> zjedzoneTluszcze = new ArrayList<SliceValue>();
-        zjedzoneTluszcze.add(new SliceValue(0.3f, getColor(android.R.color.transparent)));
-        zjedzoneTluszcze.add(new SliceValue(0.7f, getColor(R.color.corn)));
-        PieChartData zjedzoneTluszczeData = new PieChartData();
-        zjedzoneTluszczeData.setValues(zjedzoneTluszcze);
-
-        tluszczePieChart = (PieChartView) findViewById(R.id.fats_piechart);
-        tluszczePieChart.setChartRotationEnabled(true);
-        tluszczePieChart.setPieChartData(zjedzoneTluszczeData);
-
-
         List<SliceValue> zjedzoneElementy = new ArrayList<SliceValue>();
         zjedzoneElementy.add(new SliceValue(0.3f, getColor(R.color.middleBlue)));
         zjedzoneElementy.add(new SliceValue(0.6f, getColor(R.color.corn)));
@@ -132,7 +92,6 @@ public class PosilkiActivity extends AppCompatActivity {
         PieChartView elementyPieChart = (PieChartView) findViewById(R.id.elements_piechart);
         elementyPieChart.setChartRotationEnabled(true);
         elementyPieChart.setPieChartData(zjedzoneElementyData);
-
 
         final EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
         wyszukajDanieEditText.addTextChangedListener(new TextWatcher() {
@@ -148,9 +107,7 @@ public class PosilkiActivity extends AppCompatActivity {
                 // Testowo
                 String[] values;
                 try {
-                    int repeats = Integer.parseInt(text);
-                    values = new String[repeats];
-                    Arrays.fill(values, "Snickers");
+                    values = db.findFoods(text);
                     wyczysc_wyszukiwanie_btn.setVisibility(View.VISIBLE);
                 } catch (Exception e) {
                     values = new String[]{};
@@ -189,6 +146,20 @@ public class PosilkiActivity extends AppCompatActivity {
         int maxHeight = Math.round(getResources().getDimension(R.dimen.dostepne_dania_max_height));
         dostepneDaniaAdapter = new DostepneDaniaAdapter(new String[]{}, dostepneDaniaRecyclerView, maxHeight);
         dostepneDaniaRecyclerView.setAdapter(dostepneDaniaAdapter);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        db.open();
+    }
+
+    @Override
+    protected void onPause() {
+        db.close();
+
+        super.onPause();
     }
 
     private String dodajWiodaceZero(int liczba) {

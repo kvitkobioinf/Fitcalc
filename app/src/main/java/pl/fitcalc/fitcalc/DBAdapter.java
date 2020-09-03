@@ -9,10 +9,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DBAdapter {
 
     private static final String databaseName = "fitCalc";
-    private static final int databaseVersion = 11;
+    private static final int databaseVersion = 12;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -53,15 +56,6 @@ public class DBAdapter {
                     " added_by_user INT, " +
                     " barcode VARCHAR);");
 
-
-            db.execSQL("CREATE TABLE IF NOT EXISTS user_food (" +
-                    " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    " food_id INTEGER, " +
-                    " user_id INTEGER, " +
-                    " date VARCHAR, " +
-                    " serving DOUBLE, " +
-                    " meail_id INTEGER);");
-
             db.execSQL("CREATE TABLE IF NOT EXISTS user_measurements (" +
                     " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " user_id INTEGER, " +
@@ -74,6 +68,11 @@ public class DBAdapter {
                     " BMR DOUBLE, " +
                     " activity_level INTEGER);");
 
+            db.execSQL("CREATE TABLE IF NOT EXISTS meals (" +
+                    " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    " name VARCHAR, " +
+                    " kcal_share INTEGER);");
+
             db.execSQL("CREATE TABLE IF NOT EXISTS user_meals (" +
                     " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " user_id INTEGER, " +
@@ -81,16 +80,18 @@ public class DBAdapter {
                     " date VARCHAR, " +
                     " time VARCHAR);");
 
-            db.execSQL("CREATE TABLE IF NOT EXISTS meals (" +
+            db.execSQL("CREATE TABLE IF NOT EXISTS meal_food (" +
                     " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    " name VARCHAR, " +
-                    " kcal_share INTEGER);");
+                    " food_id INTEGER, " +
+                    " serving DOUBLE, " + // krotność wagi jedzenia
+                    " meal_id INTEGER);");
 
             db.execSQL("CREATE TABLE IF NOT EXISTS owner (" +
                     " user_id INTEGER);");
 
             db.execSQL("INSERT INTO owner (user_id) VALUES (0)");
 
+            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('')");
         }
 
         @Override
@@ -135,6 +136,21 @@ public class DBAdapter {
         int count = mCount.getInt(0);
         mCount.close();
         return count;
+    }
+
+    public String[] findFoods(String name) {
+        Cursor food_cursor = db.rawQuery("SELECT id, name FROM food WHERE name LIKE '%" + name + "%'", null);
+        ArrayList<String> foods = new ArrayList<>();
+
+        try {
+            while (food_cursor.moveToNext()) {
+                foods.add(food_cursor.getString(1));
+            }
+        } finally {
+            food_cursor.close();
+        }
+
+        return foods.toArray(new String[0]);
     }
 
     public long logUserIn(String email, String password) {
