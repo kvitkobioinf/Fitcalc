@@ -189,4 +189,19 @@ public class DBAdapter {
 
         return id;
     }
+
+    public String[] getUserMealIdTime(long user_id, String date) {
+        Cursor user_meal_cursor = db.rawQuery("SELECT id, time FROM user_meals WHERE user_id = '" + user_id + "' AND date = '" + date + "'", null);
+        String[] id_time = null;
+        try {
+            user_meal_cursor.moveToFirst();
+            id_time = new String[2];
+            id_time[0] = user_meal_cursor.getString(0); // id
+            id_time[1] = user_meal_cursor.getString(1); // time
+            user_meal_cursor.close();
+        } catch (Exception ignored) {
+        }
+
+        return id_time;
+    }
 }

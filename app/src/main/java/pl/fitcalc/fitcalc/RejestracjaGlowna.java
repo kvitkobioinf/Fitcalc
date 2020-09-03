@@ -51,7 +51,7 @@ public class RejestracjaGlowna extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                String date = year + "-" + AddLeadingZeros(String.valueOf(month), 2) + "-" + AddLeadingZeros(String.valueOf(dayOfMonth), 2);
+                String date = year + "-" + PosilkiActivity.DodajWiodaceZero(month) + "-" + PosilkiActivity.DodajWiodaceZero(dayOfMonth);
                 mDisplayDate.setText(date);
             }
         };
@@ -155,10 +155,5 @@ public class RejestracjaGlowna extends AppCompatActivity {
 
     public static boolean IsEmptyString(String string) {
         return string == null || string.isEmpty();
-    }
-
-    public static String AddLeadingZeros(String value, int chars) {
-        String text = "0000000000" + value;
-        return text.substring(text.length() - chars);
     }
 }

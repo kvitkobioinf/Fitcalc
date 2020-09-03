@@ -24,15 +24,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.lang.reflect.Array;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.Objects;
 
-import lecho.lib.hellocharts.listener.PieChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
@@ -59,31 +58,57 @@ public class PosilkiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posilki);
 
+        db = new DBAdapter(this);
+        db.open();
+
         Bundle extras = getIntent().getExtras();
         user_id = Objects.requireNonNull(extras).getLong("user_id");
         meal = Objects.requireNonNull(extras).getInt("meal");
-        //TODO utworzyć posiłek lub pobrać id istniejącego
         meal_name = Objects.requireNonNull(extras).getString("meal_name");
-
-        db = new DBAdapter(this);
-
         ((TextView) findViewById(R.id.posilek_tv)).setText(meal_name);
 
         Calendar teraz = Calendar.getInstance();
         final int godzina = teraz.get(Calendar.HOUR_OF_DAY);
         final int minuta = teraz.get(Calendar.MINUTE);
 
+        Date dzien = Calendar.getInstance().getTime();
+        System.out.println("Current time => " + dzien);
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String formattedDate = df.format(dzien);
+
+        String[] id_time = db.getUserMealIdTime(user_id, formattedDate);
+        String czas;
+        if (id_time != null) {
+            meal_id = Integer.parseInt(id_time[0]);
+            czas = id_time[1];
+        } else {
+            // dodawanie nowego posiłku
+            ContentValues values = new ContentValues();
+            values.put("user_id", user_id);
+            values.put("date", formattedDate);
+            czas = DodajWiodaceZero(godzina) + ':' + DodajWiodaceZero(minuta);
+            values.put("time", czas);
+            values.put("meal_id", meal);
+            meal_id = (int) db.insert("user_meals", values);
+            if (meal_id == -1) {
+                Toast.makeText(this, "Wystąpił błąd dodawania nowego posiłku", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
         final Button wybierz_godzine = (Button) findViewById(R.id.godzina_posilku_btn);
-        wybierz_godzine.setText(String.valueOf(godzina) + ':' + dodajWiodaceZero(minuta));
+        wybierz_godzine.setText(czas);
         wybierz_godzine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 TimePickerDialog godzinaPosilku = new TimePickerDialog(PosilkiActivity.this, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker timePicker, int wybrana_godzina, int wybrana_minuta) {
-                        wybierz_godzine.setText(String.valueOf(wybrana_godzina) + ':' + dodajWiodaceZero(wybrana_minuta));
-
-                        // TODO zapisanie godziny posiłku w bazie danych
+                        String czas = DodajWiodaceZero(wybrana_godzina) + ':' + DodajWiodaceZero(wybrana_minuta);
+                        wybierz_godzine.setText(czas);
+                        ContentValues values = new ContentValues();
+                        values.put("time", czas);
+                        db.update("user_meals", values, "id = " + meal_id);
                     }
                 }, godzina, minuta, true);
                 godzinaPosilku.show();
@@ -183,10 +208,9 @@ public class PosilkiActivity extends AppCompatActivity {
         super.onPause();
     }
 
-    private String dodajWiodaceZero(int liczba) {
+    public static String DodajWiodaceZero(int liczba) {
         return (liczba < 10 ? "0" : "") + String.valueOf(liczba);
     }
-
 
     public static class DostepneDaniaAdapter extends RecyclerView.Adapter<DostepneDaniaAdapter.DostepneDaniaVH> {
         private ArrayList<Food> foods;
