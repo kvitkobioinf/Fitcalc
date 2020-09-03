@@ -46,9 +46,6 @@ public class PosilkiActivity extends AppCompatActivity {
     private PieChartView elementyPieChart;
     private ImageButton wyczysc_wyszukiwanie_btn;
     private View zjedzone_dania_placeholder;
-    private PieChartView weglowodanyPieChart;
-    private PieChartView bialkaPieChart;
-    private PieChartView tluszczePieChart;
 
     private long user_id;
     private int meal;
@@ -213,7 +210,7 @@ public class PosilkiActivity extends AppCompatActivity {
 
         for (final Food food : meal_food) {
             View danie_layout = getLayoutInflater().inflate(R.layout.danie_posilku, null);
-            ((TextView) danie_layout.findViewById(R.id.name)).setText(food.name + " (" + (food.serving * food.weight) + food.unit + ")");
+            ((TextView) danie_layout.findViewById(R.id.name)).setText(food.name + " (" + (int) Math.round(food.serving * food.weight) + food.unit + ")");
             float all = food.carbohydrates + food.proteins + food.fat;
             fat = fat + (food.fat * food.serving);
             proteins = proteins + (food.proteins * food.serving);
