@@ -8,7 +8,6 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -52,8 +51,7 @@ public class RejestracjaGlowna extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 month = month + 1;
-                Log.d(TAG, "onDateSet: dd/mm/rrrr" + dayOfMonth + "/" + month + "/" + year);
-                String date = dayOfMonth + "/" + month + "/" + year;
+                String date = year + "-" + AddLeadingZeros(String.valueOf(month), 2) + "-" + AddLeadingZeros(String.valueOf(dayOfMonth), 2);
                 mDisplayDate.setText(date);
             }
         };
@@ -157,5 +155,10 @@ public class RejestracjaGlowna extends AppCompatActivity {
 
     public static boolean IsEmptyString(String string) {
         return string == null || string.isEmpty();
+    }
+
+    public static String AddLeadingZeros(String value, int chars) {
+        String text = "0000000000" + value;
+        return text.substring(text.length() - chars);
     }
 }
