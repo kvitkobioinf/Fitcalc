@@ -334,11 +334,18 @@ public class PosilkiActivity extends AppCompatActivity {
                     AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Porcja " + foods.get(position).name + " (" + foods.get(position).weight + foods.get(position).unit + ")");
                     final EditText input = new EditText(context);
+                    input.setText("1");
                     builder.setView(input);
                     builder.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            float porcja = Float.parseFloat(input.getText().toString());
+                            float porcja = 0;
+                            try {
+                                porcja = Float.parseFloat(input.getText().toString());
+                            } catch (Exception e) {
+                                Toast.makeText(context, "Nieprawidłowa krotność (porcja) dania", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                             ((PosilkiActivity) context).DodajDanie(foods.get(position), porcja);
                         }
                     });
