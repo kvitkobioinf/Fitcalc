@@ -96,7 +96,7 @@ public class DBAdapter {
             db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Snickers', '100', 'g', '483', '8.6', '60.7', '22.6')");
             db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Lody czekoladowe', '100', 'g', '261', '5.3', '31.1', '12.6')");
             db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Herbatniki', '100', 'g', '428', '8', '72', '12')");
-            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Chałwa', '100', 'g', '525', '14.1', '48.3', '30.6')");
+            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Chalwa', '100', 'g', '525', '14.1', '48.3', '30.6')");
         }
 
         @Override
@@ -133,6 +133,10 @@ public class DBAdapter {
 
     public int update(String table, ContentValues values, String where) {
         return db.update(table, values, where, null);
+    }
+
+    public int delete(String table, String where) {
+        return db.delete(table, where, null);
     }
 
     public int count(String table) {
@@ -192,21 +196,21 @@ public class DBAdapter {
 
     public String[] getUserMealIdTime(long user_id, String date) {
         Cursor user_meal_cursor = db.rawQuery("SELECT id, time FROM user_meals WHERE user_id = '" + user_id + "' AND date = '" + date + "'", null);
-        String[] id_time = null;
+        String[] id_time = new String[2];
         try {
             user_meal_cursor.moveToFirst();
-            id_time = new String[2];
             id_time[0] = user_meal_cursor.getString(0); // id
             id_time[1] = user_meal_cursor.getString(1); // time
             user_meal_cursor.close();
-        } catch (Exception ignored) {
+        } catch (Exception e) {
+            id_time = null;
         }
 
         return id_time;
     }
 
     public ArrayList<Food> getUserMealFood(int meal_id) {
-        Cursor food_cursor = db.rawQuery("SELECT food.id, name, weight, unit, kcal, proteins, carbohydrates, fat, serving FROM meal_food JOIN food ON food.id = meal_food.food_id WHERE meal_food.id = '" + meal_id + "'", null);
+        Cursor food_cursor = db.rawQuery("SELECT food.id, name, weight, unit, kcal, proteins, carbohydrates, fat, serving, meal_food.id FROM meal_food JOIN food ON food.id = meal_food.food_id WHERE meal_food.meal_id = '" + meal_id + "'", null);
         ArrayList<Food> foods = new ArrayList<>();
 
         try {
@@ -221,6 +225,7 @@ public class DBAdapter {
                 food.carbohydrates = food_cursor.getFloat(6);
                 food.fat = food_cursor.getFloat(7);
                 food.serving = food_cursor.getFloat(8);
+                food.food_meal_id = food_cursor.getInt(9);
                 foods.add(food);
             }
         } finally {

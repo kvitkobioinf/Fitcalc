@@ -43,6 +43,7 @@ public class PosilkiActivity extends AppCompatActivity {
     private DostepneDaniaAdapter dostepneDaniaAdapter;
     private RecyclerView.LayoutManager layoutManager;
     private LinearLayout foodContainer;
+    private PieChartView elementyPieChart;
     private ImageButton wyczysc_wyszukiwanie_btn;
     private View zjedzone_dania_placeholder;
     private PieChartView weglowodanyPieChart;
@@ -120,17 +121,7 @@ public class PosilkiActivity extends AppCompatActivity {
         });
 
         foodContainer = (LinearLayout) findViewById(R.id.food_container);
-
-        List<SliceValue> zjedzoneElementy = new ArrayList<SliceValue>();
-        zjedzoneElementy.add(new SliceValue(0.3f, getColor(R.color.middleBlue)));
-        zjedzoneElementy.add(new SliceValue(0.6f, getColor(R.color.corn)));
-        zjedzoneElementy.add(new SliceValue(0.1f, getColor(R.color.androidGreen)));
-        PieChartData zjedzoneElementyData = new PieChartData();
-        zjedzoneElementyData.setValues(zjedzoneElementy);
-
-        PieChartView elementyPieChart = (PieChartView) findViewById(R.id.elements_piechart);
-        elementyPieChart.setChartRotationEnabled(true);
-        elementyPieChart.setPieChartData(zjedzoneElementyData);
+        elementyPieChart = (PieChartView) findViewById(R.id.elements_piechart);
 
         final EditText wyszukajDanieEditText = (EditText) findViewById(R.id.wyszukaj_danie_edt);
         wyszukajDanieEditText.addTextChangedListener(new TextWatcher() {
@@ -195,7 +186,15 @@ public class PosilkiActivity extends AppCompatActivity {
         values.put("meal_id", meal_id);
         values.put("serving", porcja);
         values.put("food_id", danie.id);
-        db.insert("meal_food", values);
+        if (db.insert("meal_food", values) != -1)
+            OdswiezListeDan();
+    }
+
+    private void AktualizujDanie(Food danie, float porcja) {
+        ContentValues values = new ContentValues();
+        values.put("serving", porcja);
+        if (db.update("meal_food", values, "id = " + danie.food_meal_id) > 0)
+            OdswiezListeDan();
     }
 
     private void OdswiezListeDan() {
@@ -203,11 +202,69 @@ public class PosilkiActivity extends AppCompatActivity {
 
         meal_food = db.getUserMealFood(meal_id);
 
-        for (Food food : meal_food) {
+        if (meal_food.size() > 0)
+            zjedzone_dania_placeholder.setVisibility(View.GONE);
+        else
+            zjedzone_dania_placeholder.setVisibility(View.VISIBLE);
+
+        float fat = 0;
+        float proteins = 0;
+        float carbohydrates = 0;
+
+        for (final Food food : meal_food) {
             View danie_layout = getLayoutInflater().inflate(R.layout.danie_posilku, null);
-            ((TextView) danie_layout.findViewById(R.id.name)).setText(food.name);
+            ((TextView) danie_layout.findViewById(R.id.name)).setText(food.name + " (" + (food.serving * food.weight) + food.unit + ")");
+            float all = food.carbohydrates + food.proteins + food.fat;
+            fat = fat + (food.fat * food.serving);
+            proteins = proteins + (food.proteins * food.serving);
+            carbohydrates = carbohydrates + (food.carbohydrates * food.serving);
+            ((TextView) danie_layout.findViewById(R.id.nutrients)).setText("T " + (int) Math.round(100 * food.fat / all) + "% B " + (int) Math.round(100 * food.proteins / all) + "% W " + (int) Math.round(100 * food.carbohydrates / all));
+            ((ImageButton) danie_layout.findViewById(R.id.delete)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (db.delete("meal_food", "id = " + food.food_meal_id) > 0)
+                        OdswiezListeDan();
+                }
+            });
+            ((ImageButton) danie_layout.findViewById(R.id.edit)).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(PosilkiActivity.this);
+                    builder.setTitle("Porcja " + food.name + " (" + food.weight + food.unit + ")");
+                    final EditText input = new EditText(PosilkiActivity.this);
+                    input.setText(String.valueOf(food.serving));
+                    builder.setView(input);
+                    builder.setPositiveButton("Edytuj", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            float porcja = Float.parseFloat(input.getText().toString());
+                            AktualizujDanie(food, porcja);
+                        }
+                    });
+                    builder.setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();
+                }
+            });
             foodContainer.addView(danie_layout);
         }
+
+        float all = fat + proteins + carbohydrates;
+
+        List<SliceValue> zjedzoneElementy = new ArrayList<SliceValue>();
+        zjedzoneElementy.add(new SliceValue(carbohydrates / all, getColor(R.color.middleBlue)));
+        zjedzoneElementy.add(new SliceValue(fat / all, getColor(R.color.corn)));
+        zjedzoneElementy.add(new SliceValue(proteins / all, getColor(R.color.androidGreen)));
+        PieChartData zjedzoneElementyData = new PieChartData();
+        zjedzoneElementyData.setValues(zjedzoneElementy);
+
+        elementyPieChart.setChartRotationEnabled(true);
+        elementyPieChart.setPieChartData(zjedzoneElementyData);
     }
 
     @Override

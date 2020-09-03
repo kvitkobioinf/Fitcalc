@@ -13,4 +13,5 @@ public class Food {
     public float fat;
     public long added_by_user;
     public String barcode;
+    public int food_meal_id; // id w tabeli meal_food
 }
