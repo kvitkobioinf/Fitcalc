@@ -204,4 +204,29 @@ public class DBAdapter {
 
         return id_time;
     }
+
+    public ArrayList<Food> getUserMealFood(int meal_id) {
+        Cursor food_cursor = db.rawQuery("SELECT food.id, name, weight, unit, kcal, proteins, carbohydrates, fat, serving FROM meal_food JOIN food ON food.id = meal_food.food_id WHERE meal_food.id = '" + meal_id + "'", null);
+        ArrayList<Food> foods = new ArrayList<>();
+
+        try {
+            while (food_cursor.moveToNext()) {
+                Food food = new Food();
+                food.id = food_cursor.getInt(0);
+                food.name = food_cursor.getString(1);
+                food.weight = food_cursor.getFloat(2);
+                food.unit = food_cursor.getString(3);
+                food.kcal = food_cursor.getFloat(4);
+                food.proteins = food_cursor.getFloat(5);
+                food.carbohydrates = food_cursor.getFloat(6);
+                food.fat = food_cursor.getFloat(7);
+                food.serving = food_cursor.getFloat(8);
+                foods.add(food);
+            }
+        } finally {
+            food_cursor.close();
+        }
+
+        return foods;
+    }
 }

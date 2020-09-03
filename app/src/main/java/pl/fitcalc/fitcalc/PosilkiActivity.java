@@ -14,6 +14,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -32,6 +33,7 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 
+import lecho.lib.hellocharts.model.Line;
 import lecho.lib.hellocharts.model.PieChartData;
 import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
@@ -40,6 +42,7 @@ public class PosilkiActivity extends AppCompatActivity {
     private RecyclerView dostepneDaniaRecyclerView;
     private DostepneDaniaAdapter dostepneDaniaAdapter;
     private RecyclerView.LayoutManager layoutManager;
+    private LinearLayout foodContainer;
     private ImageButton wyczysc_wyszukiwanie_btn;
     private View zjedzone_dania_placeholder;
     private PieChartView weglowodanyPieChart;
@@ -50,6 +53,7 @@ public class PosilkiActivity extends AppCompatActivity {
     private int meal;
     private int meal_id;
     private String meal_name;
+    private ArrayList<Food> meal_food;
 
     DBAdapter db;
 
@@ -114,6 +118,8 @@ public class PosilkiActivity extends AppCompatActivity {
                 godzinaPosilku.show();
             }
         });
+
+        foodContainer = (LinearLayout) findViewById(R.id.food_container);
 
         List<SliceValue> zjedzoneElementy = new ArrayList<SliceValue>();
         zjedzoneElementy.add(new SliceValue(0.3f, getColor(R.color.middleBlue)));
@@ -180,6 +186,8 @@ public class PosilkiActivity extends AppCompatActivity {
         int maxHeight = Math.round(getResources().getDimension(R.dimen.dostepne_dania_max_height));
         dostepneDaniaAdapter = new DostepneDaniaAdapter(new ArrayList<Food>(), dostepneDaniaRecyclerView, maxHeight, PosilkiActivity.this);
         dostepneDaniaRecyclerView.setAdapter(dostepneDaniaAdapter);
+
+        OdswiezListeDan();
     }
 
     public void DodajDanie(Food danie, float porcja) {
@@ -191,7 +199,15 @@ public class PosilkiActivity extends AppCompatActivity {
     }
 
     private void OdswiezListeDan() {
+        foodContainer.removeAllViews();
 
+        meal_food = db.getUserMealFood(meal_id);
+
+        for (Food food : meal_food) {
+            View danie_layout = getLayoutInflater().inflate(R.layout.danie_posilku, null);
+            ((TextView) danie_layout.findViewById(R.id.name)).setText(food.name);
+            foodContainer.addView(danie_layout);
+        }
     }
 
     @Override

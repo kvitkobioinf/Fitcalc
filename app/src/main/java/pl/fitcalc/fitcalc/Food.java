@@ -6,6 +6,7 @@ public class Food {
     public int manufactor_id;
     public float weight;
     public String unit;
+    public float serving;
     public float kcal;
     public float proteins;
     public float carbohydrates;
