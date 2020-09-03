@@ -1,6 +1,9 @@
 package pl.fitcalc.fitcalc;
 
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -16,13 +19,16 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -43,6 +49,7 @@ public class PosilkiActivity extends AppCompatActivity {
 
     private long user_id;
     private int meal;
+    private int meal_id;
     private String meal_name;
 
     DBAdapter db;
@@ -55,6 +62,7 @@ public class PosilkiActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         user_id = Objects.requireNonNull(extras).getLong("user_id");
         meal = Objects.requireNonNull(extras).getInt("meal");
+        //TODO utworzyć posiłek lub pobrać id istniejącego
         meal_name = Objects.requireNonNull(extras).getString("meal_name");
 
         db = new DBAdapter(this);
@@ -102,23 +110,24 @@ public class PosilkiActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                String text = charSequence.toString();
-
-                // Testowo
-                String[] values;
-                try {
-                    values = db.findFoods(text);
-                    wyczysc_wyszukiwanie_btn.setVisibility(View.VISIBLE);
-                } catch (Exception e) {
-                    values = new String[]{};
-                    wyczysc_wyszukiwanie_btn.setVisibility(View.GONE);
-                }
-                dostepneDaniaAdapter.update(values);
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
+                String text = editable.toString();
 
+                // Testowo
+                ArrayList<Food> values = new ArrayList<>();
+                try {
+                    if (text.length() > 3) {
+                        values = db.findFoods(text);
+                        wyczysc_wyszukiwanie_btn.setVisibility(View.VISIBLE);
+                    }
+                } catch (Exception e) {
+                    values = new ArrayList<>();
+                    wyczysc_wyszukiwanie_btn.setVisibility(View.GONE);
+                }
+                dostepneDaniaAdapter.update(values);
             }
         });
 
@@ -144,8 +153,20 @@ public class PosilkiActivity extends AppCompatActivity {
         dostepneDaniaRecyclerView = (RecyclerView) findViewById(R.id.dostepne_dania_rv);
         dostepneDaniaRecyclerView.setLayoutManager(layoutManager);
         int maxHeight = Math.round(getResources().getDimension(R.dimen.dostepne_dania_max_height));
-        dostepneDaniaAdapter = new DostepneDaniaAdapter(new String[]{}, dostepneDaniaRecyclerView, maxHeight);
+        dostepneDaniaAdapter = new DostepneDaniaAdapter(new ArrayList<Food>(), dostepneDaniaRecyclerView, maxHeight, PosilkiActivity.this);
         dostepneDaniaRecyclerView.setAdapter(dostepneDaniaAdapter);
+    }
+
+    public void DodajDanie(Food danie, float porcja) {
+        ContentValues values = new ContentValues();
+        values.put("meal_id", meal_id);
+        values.put("serving", porcja);
+        values.put("food_id", danie.id);
+        db.insert("meal_food", values);
+    }
+
+    private void OdswiezListeDan() {
+
     }
 
     @Override
@@ -168,9 +189,10 @@ public class PosilkiActivity extends AppCompatActivity {
 
 
     public static class DostepneDaniaAdapter extends RecyclerView.Adapter<DostepneDaniaAdapter.DostepneDaniaVH> {
-        private String[] dania;
+        private ArrayList<Food> foods;
         private RecyclerView dostepneDaniaRecyclerView;
         private int maxHeight;
+        private Context context;
 
         public static class DostepneDaniaVH extends RecyclerView.ViewHolder {
             public TextView textView;
@@ -181,15 +203,15 @@ public class PosilkiActivity extends AppCompatActivity {
             }
         }
 
-        public DostepneDaniaAdapter(String[] myDataset, RecyclerView recyclerView, int maxHeight) {
-            dania = myDataset;
+        public DostepneDaniaAdapter(ArrayList<Food> foods, RecyclerView recyclerView, int maxHeight, Context context) {
+            this.foods = foods;
             dostepneDaniaRecyclerView = recyclerView;
             this.maxHeight = maxHeight;
+            this.context = context;
         }
 
-
-        public void update(String[] dataset) {
-            dania = dataset;
+        public void update(ArrayList<Food> foods) {
+            this.foods = foods;
             ViewGroup.LayoutParams params = dostepneDaniaRecyclerView.getLayoutParams();
             if (getItemCount() > 5) {
                 params.height = this.maxHeight;
@@ -210,13 +232,37 @@ public class PosilkiActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onBindViewHolder(DostepneDaniaVH holder, int position) {
-            holder.textView.setText(dania[position]);
+        public void onBindViewHolder(DostepneDaniaVH holder, final int position) {
+            holder.textView.setText(foods.get(position).name);
+            holder.textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Porcja " + foods.get(position).name + " (" + foods.get(position).weight + foods.get(position).unit + ")");
+                    final EditText input = new EditText(context);
+                    builder.setView(input);
+                    builder.setPositiveButton("Dodaj", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            float porcja = Float.parseFloat(input.getText().toString());
+                            ((PosilkiActivity) context).DodajDanie(foods.get(position), porcja);
+                        }
+                    });
+                    builder.setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
+
+                    builder.show();
+                }
+            });
         }
 
         @Override
         public int getItemCount() {
-            return dania.length;
+            return foods.size();
         }
     }
 }

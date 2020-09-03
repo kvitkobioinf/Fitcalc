@@ -10,12 +10,14 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.List;
 
 public class DBAdapter {
 
     private static final String databaseName = "fitCalc";
-    private static final int databaseVersion = 12;
+    private static final int databaseVersion = 13;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -46,7 +48,7 @@ public class DBAdapter {
             db.execSQL("CREATE TABLE IF NOT EXISTS food (" +
                     " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     " name VARCHAR, " +
-                    " manufactor_id VARCHAR, " + //(producent)
+                    " manufactor_id INTEGER, " + //(producent)
                     " weight DOUBLE, " +
                     " unit VARCHAR, " +
                     " kcal DOUBLE, " +
@@ -91,7 +93,10 @@ public class DBAdapter {
 
             db.execSQL("INSERT INTO owner (user_id) VALUES (0)");
 
-            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('')");
+            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Snickers', '100', 'g', '483', '8.6', '60.7', '22.6')");
+            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Lody czekoladowe', '100', 'g', '261', '5.3', '31.1', '12.6')");
+            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Herbatniki', '100', 'g', '428', '8', '72', '12')");
+            db.execSQL("INSERT INTO food (name, weight, unit, kcal, proteins, carbohydrates, fat) VALUES('Chałwa', '100', 'g', '525', '14.1', '48.3', '30.6')");
         }
 
         @Override
@@ -138,19 +143,25 @@ public class DBAdapter {
         return count;
     }
 
-    public String[] findFoods(String name) {
-        Cursor food_cursor = db.rawQuery("SELECT id, name FROM food WHERE name LIKE '%" + name + "%'", null);
-        ArrayList<String> foods = new ArrayList<>();
+    public ArrayList<Food> findFoods(String name) {
+        Cursor food_cursor = db.rawQuery("SELECT id, name, weight, unit FROM food WHERE name LIKE '%" + name + "%'", null);
+        ArrayList<Food> foods = new ArrayList<>();
 
         try {
             while (food_cursor.moveToNext()) {
-                foods.add(food_cursor.getString(1));
+                Food food = new Food();
+                food.id = food_cursor.getInt(0);
+                food.name = food_cursor.getString(1);
+                food.weight = food_cursor.getFloat(2);
+                food.unit = food_cursor.getString(3);
+
+                foods.add(food);
             }
         } finally {
             food_cursor.close();
         }
 
-        return foods.toArray(new String[0]);
+        return foods;
     }
 
     public long logUserIn(String email, String password) {
