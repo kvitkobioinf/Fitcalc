@@ -23,23 +23,42 @@ public class WyborPosilkuActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         user_id = Objects.requireNonNull(extras).getLong("user_id");
 
-        Toast.makeText(this, String.valueOf(user_id), Toast.LENGTH_SHORT).show();
-
         db = new DBAdapter(this);
+
+        // przyciski z posiłkami do wyboru docelowo generowane automatycznie na bazie danych z tabeli "meals"
     }
 
     public void otworzPosilek(View v) {
-        int posilek;
-        if (v.getId() == R.id.buttonsiadanie) {
-            posilek = 0;
-            Log.d("FitCalc", "Otworze posilek - sniadanie");
-            startActivity(new Intent(WyborPosilkuActivity.this, PosilkiActivity.class));
-        } else if (v.getId() == R.id.przekaska1button) {
-            posilek = 1;
-            Log.d("FitCalc", "Otworze posilek - przekaska 1");
+        int posilek = 0;
+        String posilek_nazwa = "";
+        switch (v.getId()) {
+            case R.id.buttonsiadanie:
+                posilek = 0;
+                posilek_nazwa = "Śniadanie";
+                break;
+            case R.id.przekaska1button:
+                posilek = 1;
+                posilek_nazwa = "Przekąska I";
+                break;
+            case R.id.buttonobiad:
+                posilek = 2;
+                posilek_nazwa = "Obiad";
+                break;
+            case R.id.buttonprzekaska2:
+                posilek = 3;
+                posilek_nazwa = "Przekąska II";
+                break;
+            case R.id.buttonkolacja:
+                posilek = 4;
+                posilek_nazwa = "Kolacja";
+                break;
         }
 
-
+        Intent posilek_intent = new Intent(WyborPosilkuActivity.this, PosilkiActivity.class);
+        posilek_intent.putExtra("user_id", user_id);
+        posilek_intent.putExtra("meal", posilek);
+        posilek_intent.putExtra("meal_name", posilek_nazwa);
+        startActivity(posilek_intent);
     }
 
 }

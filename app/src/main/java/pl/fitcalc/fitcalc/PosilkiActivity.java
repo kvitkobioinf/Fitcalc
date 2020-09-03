@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 import lecho.lib.hellocharts.listener.PieChartOnValueSelectListener;
 import lecho.lib.hellocharts.model.PieChartData;
@@ -40,10 +41,21 @@ public class PosilkiActivity extends AppCompatActivity {
     private PieChartView bialkaPieChart;
     private PieChartView tluszczePieChart;
 
+    private long user_id;
+    private int meal;
+    private String meal_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_posilki);
+
+        Bundle extras = getIntent().getExtras();
+        user_id = Objects.requireNonNull(extras).getLong("user_id");
+        meal = Objects.requireNonNull(extras).getInt("meal");
+        meal_name = Objects.requireNonNull(extras).getString("meal_name");
+
+        ((TextView) findViewById(R.id.posilek_tv)).setText(meal_name);
 
         Calendar teraz = Calendar.getInstance();
         final int godzina = teraz.get(Calendar.HOUR_OF_DAY);
