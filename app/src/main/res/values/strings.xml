@@ -33,7 +33,8 @@
     <string name="kobieta">Kobieta</string>
     <string name="Waga">Waga</string>
     <string name="Wzrost">Wzrost</string>
-    <string name="Atkywnosc">Twoja aktywność</string>
+    <string name="aktywnosc">Twoja aktywność</string>
+    <string name="wybierztypaktywnosci">Wybierz typ aktywności</string>
     <string name="siedzaca">Nieaktywny/Siedzący</string>
     <string name="siedzacy1">(Zero aktywności, tryb siedzący)</string>
     <string name="Oblicz">Oblicz</string>
@@ -67,7 +68,7 @@
     <string name="_15">15%</string>
     <string name="_30">30%</string>
     <string name="_10">10%</string>
-    <string name="procentowy_udzia_kalorii_w_ciagu_dnia">% - Procentowy udział kalorii w ciągu dnia</string>
+    <string name="procentowy_udzia_kalorii_w_ciagu_dnia">% - Pożądany procentowy udział kalorii w ciągu dnia</string>
     <string name="kontynuuj_akcepuj_regulamin">Kontynuując akceptujesz regulamin</string>
     <string name="welcome_splash">Kobieta ćwicząca jogę</string>
     <string name="logo">FitCalc logo</string>

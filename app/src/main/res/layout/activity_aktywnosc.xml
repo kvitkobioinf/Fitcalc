@@ -1,177 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".AktywnoscActivity">
-    
-    <LinearLayout
-        android:id="@+id/activitybuttons"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp"
-        android:padding="10dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        tools:context=".AktywnoscActivity">
+
+    <LinearLayout
+            android:id="@+id/activitybuttons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:padding="10dp">
 
 
         <TextView
-            android:id="@+id/aktywnosc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="@string/Atkywnosc"
-            android:textSize="25sp"
-            android:textColor="#000"/>
-
-
-            <LinearLayout
-                android:id="@+id/buttonact1"
-                android:layout_width="wrap_content"
+                android:id="@+id/aktywnosc"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:padding="10dp"
-                android:orientation="vertical"
-                android:background="@drawable/btn_color">
+                android:text="@string/aktywnosc"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="24sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                   android:text="@string/siedzaca"
-                    android:layout_gravity="center"
-                    android:textSize="20sp"
-                    android:textColor="#fafafa"
-                    android:layout_marginTop="5dp"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                   android:text="@string/siedzacy1"
-                    android:textSize="15sp"
-                    android:textColor="#fafafa"
-                    android:layout_marginTop="5dp"/>
-            </LinearLayout>
-
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/wybierztypaktywnosci"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="16sp" />
 
         <LinearLayout
-            android:id="@+id/buttonact2"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_color"
-           android:orientation="vertical"
-            android:text="@string/dosc_aktywny">
+                android:id="@+id/buttonact1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button_selector"
+                android:gravity="center"
+                android:onClick="WybierzPosilek"
+                android:orientation="vertical"
+                android:padding="12dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-              android:text="@string/dosc_aktywny"
-                android:textSize="20sp"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="30dp"
-                android:paddingRight="30dp"
-                android:layout_gravity="center"
-                android:textColor="#fafafa"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/siedzaca"
+                    android:textColor="#fafafa"
+                    android:textSize="16sp" />
+
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/uwzgl_dniaj_c_spacery_i_wiczenia_1_2_w_tygodniu"
-                android:textSize="15sp"
-                android:layout_marginTop="5dp"
-                android:gravity="center"
-                android:textColor="#fafafa"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/siedzacy1"
+                    android:textColor="#fafafa"
+                    android:textSize="12sp" />
         </LinearLayout>
 
 
+        <LinearLayout
+                android:id="@+id/buttonact2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button_selector"
+                android:gravity="center"
+                android:onClick="WybierzPosilek"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:text="@string/dosc_aktywny">
 
-    <LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/bottonact3"
-    android:layout_marginTop="20dp"
-  android:orientation="vertical"
-    android:background="@drawable/btn_color"
-    android:padding="10dp"
-    tools:ignore="HardcodedText">
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/dosc_aktywny"
+                    android:textColor="#fafafa"
+                    android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Umiarkowanie aktywny"
-            android:textSize="20sp"
-            android:layout_marginTop="5dp"
-            android:textColor="#fafafa"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/wiczenia_2_3_razy_w_tygodniu"
-            android:textSize="15sp"
-            android:layout_marginTop="5dp"
-            android:textColor="#fafafa"
-            />
-    </LinearLayout>
-
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/buttonact4"
-    android:layout_marginTop="20dp"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:padding="10dp"
-    android:background="@drawable/btn_color"
-    android:textColor="#fafafa">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-       android:text="@string/aktywny"
-        android:textSize="20sp"
-        android:layout_marginTop="5dp"
-        android:textColor="#fafafa"
-        />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/ostre_wiczenia_ponad_3_razy_w_tygodniu"
-        android:textSize="15sp"
-        android:layout_marginTop="5dp"
-        android:gravity="center"
-        android:textColor="#fafafa"/>
-        />
-
-</LinearLayout>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/uwzgl_dniaj_c_spacery_i_wiczenia_1_2_w_tygodniu"
+                    android:textColor="#fafafa"
+                    android:textSize="12sp" />
+        </LinearLayout>
 
 
         <LinearLayout
-            android:id="@+id/buttonact5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/btn_color"
-            android:gravity="center"
-            android:padding="10dp"
-            android:orientation="vertical"
-            android:textColor="#fafafa">
+                android:id="@+id/buttonact3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button_selector"
+                android:gravity="center"
+                android:onClick="WybierzPosilek"
+                android:orientation="vertical"
+                android:padding="12dp">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/bardzo_aktywny"
-                android:textColor="#fafafa"
-                android:textSize="15sp" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Umiarkowanie aktywny"
+                    android:textColor="#fafafa"
+                    android:textSize="16sp" />
 
             <TextView
-                android:layout_width="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/wiczenia_2_3_razy_w_tygodniu"
+                    android:textColor="#fafafa"
+                    android:textSize="12sp" />
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:id="@+id/buttonact4"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="@string/codzienne_ostre_wiczenia"
-                android:textColor="#fafafa"
-                android:textSize="15sp" />
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button_selector"
+                android:gravity="center"
+                android:onClick="WybierzPosilek"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:textColor="#fafafa">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/aktywny"
+                    android:textColor="#fafafa"
+                    android:textSize="16sp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ostre_wiczenia_ponad_3_razy_w_tygodniu"
+                    android:textColor="#fafafa"
+                    android:textSize="12sp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+                android:id="@+id/buttonact5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded_button_selector"
+                android:gravity="center"
+                android:onClick="WybierzPosilek"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:textColor="#fafafa">
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/bardzo_aktywny"
+                    android:textColor="#fafafa"
+                    android:textSize="16sp" />
+
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/codzienne_ostre_wiczenia"
+                    android:textColor="#fafafa"
+                    android:textSize="12sp" />
         </LinearLayout>
 
     </LinearLayout>

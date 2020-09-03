@@ -12,7 +12,7 @@ import android.util.Log;
 public class DBAdapter {
 
     private static final String databaseName = "fitCalc";
-    private static final int databaseVersion = 10;
+    private static final int databaseVersion = 11;
 
     private final Context context;
     private DatabaseHelper DBHelper;
@@ -72,7 +72,7 @@ public class DBAdapter {
                     " height DOUBLE, " +
                     " BMI DOUBLE, " +
                     " BMR DOUBLE, " +
-                    " activity_level DOUBLE);");
+                    " activity_level INTEGER);");
 
             db.execSQL("CREATE TABLE IF NOT EXISTS user_meals (" +
                     " id INTEGER PRIMARY KEY AUTOINCREMENT, " +
@@ -89,7 +89,7 @@ public class DBAdapter {
             db.execSQL("CREATE TABLE IF NOT EXISTS owner (" +
                     " user_id INTEGER);");
 
-             db.execSQL("INSERT INTO owner (user_id) VALUES (0)");
+            db.execSQL("INSERT INTO owner (user_id) VALUES (0)");
 
         }
 
@@ -125,6 +125,10 @@ public class DBAdapter {
         return db.insert(table, null, values);
     }
 
+    public int update(String table, ContentValues values, String where) {
+        return db.update(table, values, where, null);
+    }
+
     public int count(String table) {
         Cursor mCount = db.rawQuery("SELECT COUNT(*) FROM " + table + "", null);
         mCount.moveToFirst();
@@ -133,18 +137,19 @@ public class DBAdapter {
         return count;
     }
 
-    public int logUserIn(String email, String password) {
+    public long logUserIn(String email, String password) {
         Cursor mCount = db.rawQuery("SELECT id FROM users WHERE email = '" + email + "' AND password = '" + password + "'", null);
-        int id = -1;
+        long id = -1;
         try {
             mCount.moveToFirst();
-            id = mCount.getInt(0);
+            id = mCount.getLong(0);
             mCount.close();
         } catch (Exception e) {
         }
 
         return id;
     }
+
     public int getUserId(String email) {
         Cursor mCount = db.rawQuery("SELECT id FROM users WHERE email = '" + email + "'", null);
         int id = -1;

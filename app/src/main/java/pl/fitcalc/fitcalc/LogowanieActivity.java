@@ -26,14 +26,16 @@ public class LogowanieActivity extends AppCompatActivity {
         zaloguj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString());
+                long user_id = db.logUserIn(email.getText().toString(), haslo.getText().toString());
 
-                if (user_id == -1)
+                if (user_id == -1) {
                     Toast.makeText(LogowanieActivity.this, "Nieprawidłowe dane logowania", Toast.LENGTH_SHORT).show();
-                else {
-                    Intent zaloguj_intent = new Intent(LogowanieActivity.this, WyborPosilkuActivity.class);
-                    startActivity(zaloguj_intent);
+                    return;
                 }
+
+                Intent wybor_posilku_intent = new Intent(LogowanieActivity.this, WyborPosilkuActivity.class);
+                wybor_posilku_intent.putExtra("user_id", user_id);
+                startActivity(wybor_posilku_intent);
             }
         });
     }

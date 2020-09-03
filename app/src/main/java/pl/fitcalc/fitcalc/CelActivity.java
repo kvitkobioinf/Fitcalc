@@ -98,7 +98,7 @@ public class CelActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.kontynuuj)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (RejestracjaGlowna.IsEmptyString(textwaga.toString())) {
+                if (RejestracjaGlowna.IsEmptyString(textwaga.getText().toString())) {
                     Toast.makeText(CelActivity.this, "Uzupełnij wagę docelową", Toast.LENGTH_SHORT).show();
                     return;
                 }
@@ -116,7 +116,7 @@ public class CelActivity extends AppCompatActivity {
                 SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                 String formattedDate = df.format(c);
                 values.put("date", formattedDate);
-                values.put("desired_weight", textwaga.toString());
+                values.put("desired_weight", textwaga.getText().toString());
                 values.put("goal", cel);
                 long measurement_id = db.insert("user_measurements", values);
                 db.close();
